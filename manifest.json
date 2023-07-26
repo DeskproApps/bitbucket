@@ -1,26 +1,30 @@
 {
-  "name": "@deskpro-apps/my-app",
-  "title": "My App",
-  "description": "My Deskpro app",
-  "version": "0.0.13",
+  "name": "@deskpro-apps/bitbucket",
+  "title": "Bitbucket",
+  "description": "",
+  "version": "0.0.0",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
   "targets": [{ "target": "ticket_sidebar", "entrypoint": "index.html" }],
-  "settings": {
-    "example": {
-      "title": "Example Setting",
-      "description": "Example backend only setting",
-      "type": "string",
-      "isRequired": false,
-      "isBackendOnly": true
+  "entityAssociations": {
+    "linkedBitbucketIssue": {
+      "title": "Linked Bitbucket Issue",
+      "entity": "ticket",
+      "type": "external_id"
     }
   },
+  "settings": {},
   "proxy": {
     "whitelist": [
       {
-        "url": "https://jsonplaceholder.typicode.com/.*",
-        "methods": ["GET"],
+        "url": "https://api.bitbucket.org/2.0/.*",
+        "methods": ["GET", "POST"],
+        "timeout": 20
+      },
+      {
+        "url": "https://bitbucket.org/site/oauth2/.*",
+        "methods": ["POST"],
         "timeout": 20
       }
     ]
