@@ -1,4 +1,4 @@
-import type { BitbucketAPIError } from "./types";
+import type { BitbucketAuthError, BitbucketAPIError } from "./types";
 
 export type InitData = {
   status: number,
@@ -7,7 +7,7 @@ export type InitData = {
 
 class BitbucketError extends Error {
   status: number;
-  data: BitbucketAPIError;
+  data: BitbucketAuthError|BitbucketAPIError;
 
   constructor({ status, data }: InitData) {
     const message = "Bitbucket Api Error";
