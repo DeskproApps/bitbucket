@@ -1,6 +1,6 @@
 import isEmpty from "lodash/isEmpty";
 import { proxyFetch } from "@deskpro/app-sdk";
-import { BITBUCKET_URL/*, placeholders*/ } from "../../constants";
+import { BITBUCKET_URL, placeholders } from "../../constants";
 import { getQueryParams } from "../../utils";
 import { BitbucketError } from "./BitbucketError";
 import type { Request } from "../../types";
@@ -17,13 +17,12 @@ const baseRequest: Request = async (client, {
 
   const baseUrl = rawUrl ? rawUrl : `${BITBUCKET_URL}${url}`;
   const params = getQueryParams(queryParams);
-  // const accessTokens = get(settings, ["access_tokens"], placeholders.ACCESS_TOKEN);
 
   const requestUrl = `${baseUrl}${params}`;
   const options: RequestInit = {
     method,
     headers: {
-      // "Authorization": `Bearer ${accessTokens}`,
+      "Authorization": `Bearer ${placeholders.ACCESS_TOKEN}`,
       ...customHeaders,
     },
   };

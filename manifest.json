@@ -14,11 +14,34 @@
       "type": "external_id"
     }
   },
-  "settings": {},
+  "settings": {
+    "key": {
+      "title": "Key",
+      "type": "string",
+      "isRequired": true,
+      "isBackendOnly": false,
+      "order": 10
+    },
+    "secret": {
+      "title": "Secret",
+      "type": "string",
+      "isRequired": true,
+      "isBackendOnly": true,
+      "order": 20
+    },
+    "callback_url": {
+      "title": "Callback URL",
+      "type": "app_embedded",
+      "options": { "entrypoint": "#/admin/callback" },
+      "isRequired": false,
+      "isBackendOnly": true,
+      "order": 30
+    }
+  },
   "proxy": {
     "whitelist": [
       {
-        "url": "https://api.bitbucket.org/2.0/.*",
+        "url": "https://api.bitbucket.org/.*",
         "methods": ["GET", "POST"],
         "timeout": 20
       },

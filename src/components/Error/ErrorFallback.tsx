@@ -1,7 +1,8 @@
+import get from "lodash/get";
 import { Stack } from "@deskpro/deskpro-ui";
 import { BitbucketError } from "../../services/bitbucket";
-import { ErrorBlock } from "../common";
-import { Container } from "../common";
+import { isAuthError, isAPIError } from "../../utils";
+import { Container, ErrorBlock } from "../common";
 import type { FC } from "react";
 import type { FallbackProps } from "react-error-boundary";
 
@@ -10,14 +11,18 @@ type Props = Omit<FallbackProps, "error"> & {
 };
 
 const ErrorFallback: FC<Props> = ({ error }) => {
-  const message = "There was an error!";
+  let message = "There was an error!";
   const button = null;
 
   // eslint-disable-next-line no-console
   console.error(error);
 
   if (error instanceof BitbucketError) {
-    //...
+    message = isAuthError(error.data)
+      ? get(error, ["data", "error_description"])
+      : isAPIError(error.data)
+      ? get(error, ["data", "error", "message"])
+      : message;
   }
 
   return (
