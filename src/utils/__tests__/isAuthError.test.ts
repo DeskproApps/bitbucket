@@ -14,7 +14,7 @@ describe("isPayload", () => {
           message: "error message",
           detail: "There is no API hosted at this URL."
         }
-      })).toBeFalsy()
+      } as never)).toBeFalsy()
     });
 
     test.each([undefined, null, "", 0, true, false, {}])("wrong value: %p", (payload) => {

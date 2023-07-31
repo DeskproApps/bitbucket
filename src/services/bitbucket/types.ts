@@ -8,6 +8,7 @@ export type BitbucketAuthError = {
 export type BitbucketAPIError = {
   type: "error",
   error: {
+    code: number,
     message: string,
     detail: string, // "There is no API hosted at this URL.\n\nFor information about our API's, please refer to the documentation at: https://developer.atlassian.com/bitbucket/api/2/reference/"
   }

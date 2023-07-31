@@ -6,6 +6,7 @@ describe("isPayload", () => {
       expect(isAPIError({
         type: "error",
         error: {
+          code: 100500,
           message: "error message",
           detail: "There is no API hosted at this URL."
         }
