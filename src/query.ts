@@ -13,6 +13,8 @@ const queryClient = new QueryClient({
 enum QueryKey {
   REPOSITORIES = "repositories",
   ISSUES_BY_REPO = "issuesByRepo",
+  LINKED_TASKS = "linkedTasks",
+  ISSUE = "issue",
 }
 
 export { queryClient, QueryKey };

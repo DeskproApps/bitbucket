@@ -1,11 +1,13 @@
-import { H1 } from "@deskpro/deskpro-ui";
-import { useDeskproElements } from "@deskpro/app-sdk";
-import { useSetTitle, useSetBadgeCount } from "../../hooks";
+import { useDeskproElements, LoadingSpinner } from "@deskpro/app-sdk";
+import { useSetTitle, useSetBadgeCount, useLinkedIssues } from "../../hooks";
+import { Home } from "../../components";
 import type { FC } from "react";
 
 const HomePage: FC = () => {
+  const { issues, isLoading } = useLinkedIssues();
+
   useSetTitle("Bitbucket");
-  useSetBadgeCount([]);
+  useSetBadgeCount(issues);
 
   useDeskproElements(({ registerElement, clearElements }) => {
     clearElements();
@@ -25,8 +27,14 @@ const HomePage: FC = () => {
     });
   });
 
+  if (isLoading) {
+    return (
+      <LoadingSpinner/>
+    );
+  }
+
   return (
-    <H1>Home Page</H1>
+    <Home issues={issues} />
   );
 };
 
