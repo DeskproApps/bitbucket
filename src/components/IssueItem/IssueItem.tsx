@@ -2,7 +2,14 @@ import { useCallback } from "react"
 import get from "lodash/get";
 import { Title, TwoProperties, Property } from "@deskpro/app-sdk";
 import { format } from "../../utils/date";
-import { Link, BitbucketLogo, DeskproTickets, TextWithLink, Member } from "../common";
+import {
+  Link,
+  Member,
+  Status,
+  TextWithLink,
+  BitbucketLogo,
+  DeskproTickets,
+} from "../common";
 import type { FC, MouseEventHandler } from "react";
 import type { Issue } from "../../services/bitbucket/types";
 
@@ -12,6 +19,8 @@ type Props = {
 };
 
 const IssueItem: FC<Props> = ({ issue, onClickTitle }) => {
+  const issueId = get(issue, ["id"]);
+
   const onClick: MouseEventHandler<HTMLAnchorElement> = useCallback((e) => {
     e.preventDefault();
     onClickTitle && onClickTitle();
@@ -29,14 +38,14 @@ const IssueItem: FC<Props> = ({ issue, onClickTitle }) => {
         marginBottom={10}
       />
       <TwoProperties
-        leftLabel="State"
-        leftText={get(issue, ["state"], "-")}
+        leftLabel="Status"
+        leftText={<Status status={get(issue, ["state"])} />}
         rightLabel="Date Created"
         rightText={format(get(issue, ["created_on"]))}
       />
       <TwoProperties
         leftLabel="Issue ID"
-        leftText={get(issue, ["id"], "-")}
+        leftText={issueId ? `#${issueId}` : "-"}
         rightLabel="Workspace"
         rightText={(
           <TextWithLink

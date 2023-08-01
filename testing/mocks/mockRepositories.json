@@ -1,0 +1,262 @@
+{
+  "values": [
+    {
+      "type": "repository",
+      "full_name": "f_dev_team/ff",
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff"
+        },
+        "html": {
+          "href": "https://bitbucket.org/f_dev_team/ff"
+        },
+        "avatar": {
+          "href": "https://bytebucket.org/ravatar/%7Brepository002%7D?ts=php"
+        },
+        "pullrequests": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/pullrequests"
+        },
+        "commits": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/commits"
+        },
+        "forks": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/forks"
+        },
+        "watchers": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/watchers"
+        },
+        "branches": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/refs/branches"
+        },
+        "tags": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/refs/tags"
+        },
+        "downloads": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/downloads"
+        },
+        "source": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/src"
+        },
+        "clone": [
+          {
+            "name": "https",
+            "href": "https://zpawn@bitbucket.org/f_dev_team/ff.git"
+          },
+          {
+            "name": "ssh",
+            "href": "git@bitbucket.org:f_dev_team/ff.git"
+          }
+        ],
+        "issues": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/issues"
+        },
+        "hooks": {
+          "href": "https://api.bitbucket.org/2.0/repositories/f_dev_team/ff/hooks"
+        }
+      },
+      "name": "FF",
+      "slug": "ff",
+      "description": "",
+      "scm": "git",
+      "website": "",
+      "owner": {
+        "display_name": "FDT",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/%7Buser002%7D"
+          },
+          "avatar": {
+            "href": "https://bitbucket.org/account/f_dev_team/avatar/"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Buser002%7D/"
+          }
+        },
+        "type": "team",
+        "uuid": "{user002}",
+        "username": "f_dev_team"
+      },
+      "workspace": {
+        "type": "workspace",
+        "uuid": "{user002}",
+        "name": "FDT",
+        "slug": "f_dev_team",
+        "links": {
+          "avatar": {
+            "href": "https://bitbucket.org/workspaces/f_dev_team/avatar/?ts=1543620097"
+          },
+          "html": {
+            "href": "https://bitbucket.org/f_dev_team/"
+          },
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/f_dev_team"
+          }
+        }
+      },
+      "is_private": true,
+      "project": {
+        "type": "project",
+        "key": "PROJ",
+        "uuid": "{project002}",
+        "name": "Untitled project",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/f_dev_team/projects/PROJ"
+          },
+          "html": {
+            "href": "https://bitbucket.org/f_dev_team/workspace/projects/PROJ"
+          },
+          "avatar": {
+            "href": "https://bitbucket.org/account/user/f_dev_team/projects/PROJ/avatar/32?ts=1449190880"
+          }
+        }
+      },
+      "fork_policy": "no_forks",
+      "created_on": "2015-09-12T16:31:09.651209+00:00",
+      "updated_on": "2020-02-27T21:23:46.789047+00:00",
+      "size": 70669493,
+      "language": "php",
+      "has_issues": true,
+      "has_wiki": false,
+      "uuid": "{repository002}",
+      "mainbranch": {
+        "name": "master",
+        "type": "branch"
+      },
+      "override_settings": {
+        "default_merge_strategy": false,
+        "branching_model": false
+      }
+    },
+    {
+      "type": "repository",
+      "full_name": "zpawn/apps-lab",
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab"
+        },
+        "avatar": {
+          "href": "https://bytebucket.org/ravatar/%7Brepository001%7D?ts=default"
+        },
+        "pullrequests": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/pullrequests"
+        },
+        "commits": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/commits"
+        },
+        "forks": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/forks"
+        },
+        "watchers": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/watchers"
+        },
+        "branches": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/refs/branches"
+        },
+        "tags": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/refs/tags"
+        },
+        "downloads": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/downloads"
+        },
+        "source": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/src"
+        },
+        "clone": [
+          {
+            "name": "https",
+            "href": "https://zpawn@bitbucket.org/zpawn/apps-lab.git"
+          },
+          {
+            "name": "ssh",
+            "href": "git@bitbucket.org:zpawn/apps-lab.git"
+          }
+        ],
+        "issues": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues"
+        },
+        "hooks": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/hooks"
+        }
+      },
+      "name": "apps-lab",
+      "slug": "apps-lab",
+      "description": "",
+      "scm": "git",
+      "website": null,
+      "owner": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Buser001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/290bf0534ce3c93040db8e862f744d81?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Buser001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{user001}",
+        "account_id": "557058:0c332841-7361-424e-abe6-944fec51eecf",
+        "nickname": "zpawn"
+      },
+      "workspace": {
+        "type": "workspace",
+        "uuid": "{user001}",
+        "name": "My-own workspace",
+        "slug": "zpawn",
+        "links": {
+          "avatar": {
+            "href": "https://bitbucket.org/workspaces/zpawn/avatar/?ts=1690825549"
+          },
+          "html": {
+            "href": "https://bitbucket.org/zpawn/"
+          },
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/zpawn"
+          }
+        }
+      },
+      "is_private": true,
+      "project": {
+        "type": "project",
+        "key": "DPP",
+        "uuid": "{e249006f-9a26-42bd-8450-01ba8df1324b}",
+        "name": "Deskpro Public Rroject",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/workspaces/zpawn/projects/DPP"
+          },
+          "html": {
+            "href": "https://bitbucket.org/zpawn/workspace/projects/DPP"
+          },
+          "avatar": {
+            "href": "https://bitbucket.org/account/user/zpawn/projects/DPP/avatar/32?ts=1690382394"
+          }
+        }
+      },
+      "fork_policy": "no_public_forks",
+      "created_on": "2023-07-26T14:42:07.878993+00:00",
+      "updated_on": "2023-07-26T15:00:00.820566+00:00",
+      "size": 84136,
+      "language": "typescript",
+      "has_issues": true,
+      "has_wiki": false,
+      "uuid": "{repository001}",
+      "mainbranch": {
+        "name": "master",
+        "type": "branch"
+      },
+      "override_settings": {
+        "default_merge_strategy": true,
+        "branching_model": true
+      }
+    }
+  ],
+  "pagelen": 100
+}

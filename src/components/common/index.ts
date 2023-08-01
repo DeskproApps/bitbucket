@@ -11,3 +11,4 @@ export { BitbucketLogo } from "./BitbucketLogo";
 export { DeskproTickets } from "./DeskproTickets";
 export { TextWithLink } from "./TextWithLink";
 export { Member } from "./Member";
+export { Status } from "./Status";

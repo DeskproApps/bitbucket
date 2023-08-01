@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import get from "lodash/get";
 import size from "lodash/size";
@@ -45,6 +45,8 @@ const LinkPage: FC = () => {
     setSelectedIssues(newSelectedIssues);
   }, [selectedIssues]);
 
+  const onCancel = useCallback(() => navigate("/home"), [navigate]);
+
   const onLinkIssues = useCallback(() => {
     if (!client || !ticketId || !size(selectedIssues)) {
       return;
@@ -73,7 +75,10 @@ const LinkPage: FC = () => {
     });
   });
 
-  const onCancel = useCallback(() => navigate("/home"), [navigate]);
+  // At the beginning, we choose the first repository
+  useEffect(() => {
+    setSelectedRepository(get(repositories, [0, "full_name"], ""));
+  }, [repositories]);
 
   return (
     <LinkIssues

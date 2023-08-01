@@ -21,6 +21,7 @@ const Buttons: FC<Props> = ({ isSubmitting, selectedIssues, onLinkIssues, onCanc
       onClick={onLinkIssues}
     />
     <Button
+      type="button"
       text="Cancel"
       intent="secondary"
       onClick={onCancel}
