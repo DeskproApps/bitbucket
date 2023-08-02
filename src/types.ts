@@ -34,7 +34,13 @@ export type Settings = {
   key?: string,
 };
 
-export type TicketData = object;
+export type TicketData = {
+  ticket: {
+    id: string,
+    subject: string,
+    permalinkUrl: string,
+  },
+};
 
 export type TicketContext = Context<TicketData, Maybe<Settings>>;
 

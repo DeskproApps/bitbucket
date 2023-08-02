@@ -1,0 +1,696 @@
+{
+  "values": [
+    {
+      "type": "issue",
+      "id": 1,
+      "repository": {
+        "type": "repository",
+        "full_name": "zpawn/apps-lab",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab"
+          },
+          "html": {
+            "href": "https://bitbucket.org/zpawn/apps-lab"
+          },
+          "avatar": {
+            "href": "https://bytebucket.org/ravatar/%7Brepository001%7D?ts=default"
+          }
+        },
+        "name": "apps-lab",
+        "workspace": {
+          "type": "workspace",
+          "uuid": "{workspace001}",
+          "name": "My-own workspace",
+          "slug": "zpawn",
+          "links": {
+            "avatar": {
+              "href": "https://bitbucket.org/workspaces/zpawn/avatar/?ts=1690793838"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/"
+            },
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn"
+            }
+          }
+        },
+        "project": {
+          "type": "project",
+          "key": "DPP",
+          "uuid": "{project001}",
+          "name": "Deskpro Public Rroject",
+          "links": {
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn/projects/DPP"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/workspace/projects/DPP"
+            },
+            "avatar": {
+              "href": "https://bitbucket.org/account/user/zpawn/projects/DPP/avatar/32?ts=1690382394"
+            }
+          }
+        },
+        "uuid": "{repository001}"
+      },
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/1"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab/issues/1/classic-issue-in-the-public-repo"
+        },
+        "comments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/1/comments"
+        },
+        "attachments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/1/attachments"
+        },
+        "watch": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/1/watch"
+        },
+        "vote": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/1/vote"
+        }
+      },
+      "title": "Classic issue in the Public repo",
+      "content": {
+        "type": "rendered",
+        "raw": "",
+        "markup": "markdown",
+        "html": ""
+      },
+      "reporter": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Bworkspace001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/user001?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Bworkspace001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{workspace001}",
+        "account_id": "user001",
+        "nickname": "zpawn"
+      },
+      "assignee": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Bworkspace001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/user001?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Bworkspace001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{workspace001}",
+        "account_id": "user001",
+        "nickname": "zpawn"
+      },
+      "created_on": "2023-07-26T14:46:45.507944+00:00",
+      "edited_on": null,
+      "updated_on": "2023-07-31T15:39:28.232873+00:00",
+      "state": "on hold",
+      "kind": "bug",
+      "milestone": null,
+      "component": null,
+      "priority": "minor",
+      "version": null,
+      "votes": 0,
+      "watches": 1
+    },
+    {
+      "type": "issue",
+      "id": 2,
+      "repository": {
+        "type": "repository",
+        "full_name": "zpawn/apps-lab",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab"
+          },
+          "html": {
+            "href": "https://bitbucket.org/zpawn/apps-lab"
+          },
+          "avatar": {
+            "href": "https://bytebucket.org/ravatar/%7Brepository001%7D?ts=default"
+          }
+        },
+        "name": "apps-lab",
+        "workspace": {
+          "type": "workspace",
+          "uuid": "{workspace001}",
+          "name": "My-own workspace",
+          "slug": "zpawn",
+          "links": {
+            "avatar": {
+              "href": "https://bitbucket.org/workspaces/zpawn/avatar/?ts=1690793838"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/"
+            },
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn"
+            }
+          }
+        },
+        "project": {
+          "type": "project",
+          "key": "DPP",
+          "uuid": "{project001}",
+          "name": "Deskpro Public Rroject",
+          "links": {
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn/projects/DPP"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/workspace/projects/DPP"
+            },
+            "avatar": {
+              "href": "https://bitbucket.org/account/user/zpawn/projects/DPP/avatar/32?ts=1690382394"
+            }
+          }
+        },
+        "uuid": "{repository001}"
+      },
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/2"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab/issues/2/blocker-bug-with-migrations"
+        },
+        "comments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/2/comments"
+        },
+        "attachments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/2/attachments"
+        },
+        "watch": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/2/watch"
+        },
+        "vote": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/2/vote"
+        }
+      },
+      "title": "[blocker] Bug with migrations",
+      "content": {
+        "type": "rendered",
+        "raw": "",
+        "markup": "markdown",
+        "html": ""
+      },
+      "reporter": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Bworkspace001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/user001?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Bworkspace001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{workspace001}",
+        "account_id": "user001",
+        "nickname": "zpawn"
+      },
+      "assignee": null,
+      "created_on": "2023-07-31T15:35:54.990605+00:00",
+      "edited_on": null,
+      "updated_on": "2023-07-31T15:35:56.628701+00:00",
+      "state": "new",
+      "kind": "bug",
+      "milestone": null,
+      "component": null,
+      "priority": "blocker",
+      "version": null,
+      "votes": 0,
+      "watches": 1
+    },
+    {
+      "type": "issue",
+      "id": 3,
+      "repository": {
+        "type": "repository",
+        "full_name": "zpawn/apps-lab",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab"
+          },
+          "html": {
+            "href": "https://bitbucket.org/zpawn/apps-lab"
+          },
+          "avatar": {
+            "href": "https://bytebucket.org/ravatar/%7Brepository001%7D?ts=default"
+          }
+        },
+        "name": "apps-lab",
+        "workspace": {
+          "type": "workspace",
+          "uuid": "{workspace001}",
+          "name": "My-own workspace",
+          "slug": "zpawn",
+          "links": {
+            "avatar": {
+              "href": "https://bitbucket.org/workspaces/zpawn/avatar/?ts=1690793838"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/"
+            },
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn"
+            }
+          }
+        },
+        "project": {
+          "type": "project",
+          "key": "DPP",
+          "uuid": "{project001}",
+          "name": "Deskpro Public Rroject",
+          "links": {
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn/projects/DPP"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/workspace/projects/DPP"
+            },
+            "avatar": {
+              "href": "https://bitbucket.org/account/user/zpawn/projects/DPP/avatar/32?ts=1690382394"
+            }
+          }
+        },
+        "uuid": "{repository001}"
+      },
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/3"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab/issues/3/enhancement-issue-with-another-kind"
+        },
+        "comments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/3/comments"
+        },
+        "attachments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/3/attachments"
+        },
+        "watch": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/3/watch"
+        },
+        "vote": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/3/vote"
+        }
+      },
+      "title": "[enhancement] Issue with another kind",
+      "content": {
+        "type": "rendered",
+        "raw": "",
+        "markup": "markdown",
+        "html": ""
+      },
+      "reporter": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Bworkspace001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/user001?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Bworkspace001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{workspace001}",
+        "account_id": "user001",
+        "nickname": "zpawn"
+      },
+      "assignee": null,
+      "created_on": "2023-07-31T15:37:17.431292+00:00",
+      "edited_on": null,
+      "updated_on": "2023-07-31T15:41:38.489039+00:00",
+      "state": "wontfix",
+      "kind": "enhancement",
+      "milestone": null,
+      "component": null,
+      "priority": "major",
+      "version": null,
+      "votes": 0,
+      "watches": 1
+    },
+    {
+      "type": "issue",
+      "id": 4,
+      "repository": {
+        "type": "repository",
+        "full_name": "zpawn/apps-lab",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab"
+          },
+          "html": {
+            "href": "https://bitbucket.org/zpawn/apps-lab"
+          },
+          "avatar": {
+            "href": "https://bytebucket.org/ravatar/%7Brepository001%7D?ts=default"
+          }
+        },
+        "name": "apps-lab",
+        "workspace": {
+          "type": "workspace",
+          "uuid": "{workspace001}",
+          "name": "Ilya Makarov",
+          "slug": "zpawn",
+          "links": {
+            "avatar": {
+              "href": "https://bitbucket.org/workspaces/zpawn/avatar/?ts=1690793838"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/"
+            },
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn"
+            }
+          }
+        },
+        "project": {
+          "type": "project",
+          "key": "DPP",
+          "uuid": "{project001}",
+          "name": "Deskpro Public Rroject",
+          "links": {
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn/projects/DPP"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/workspace/projects/DPP"
+            },
+            "avatar": {
+              "href": "https://bitbucket.org/account/user/zpawn/projects/DPP/avatar/32?ts=1690382394"
+            }
+          }
+        },
+        "uuid": "{repository001}"
+      },
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/4"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab/issues/4/enhancement-issue-with-another-kind"
+        },
+        "comments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/4/comments"
+        },
+        "attachments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/4/attachments"
+        },
+        "watch": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/4/watch"
+        },
+        "vote": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/4/vote"
+        }
+      },
+      "title": "[enhancement] Enhancement Issue",
+      "content": {
+        "type": "rendered",
+        "raw": "",
+        "markup": "markdown",
+        "html": ""
+      },
+      "reporter": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Bworkspace001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/user001?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Bworkspace001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{workspace001}",
+        "account_id": "user001",
+        "nickname": "zpawn"
+      },
+      "assignee": null,
+      "created_on": "2023-07-31T15:37:37.078897+00:00",
+      "edited_on": null,
+      "updated_on": "2023-07-31T15:37:38.125289+00:00",
+      "state": "new",
+      "kind": "enhancement",
+      "milestone": null,
+      "component": null,
+      "priority": "trivial",
+      "version": null,
+      "votes": 0,
+      "watches": 1
+    },
+    {
+      "type": "issue",
+      "id": 5,
+      "repository": {
+        "type": "repository",
+        "full_name": "zpawn/apps-lab",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab"
+          },
+          "html": {
+            "href": "https://bitbucket.org/zpawn/apps-lab"
+          },
+          "avatar": {
+            "href": "https://bytebucket.org/ravatar/%7Brepository001%7D?ts=default"
+          }
+        },
+        "name": "apps-lab",
+        "workspace": {
+          "type": "workspace",
+          "uuid": "{workspace001}",
+          "name": "My-own workspace",
+          "slug": "zpawn",
+          "links": {
+            "avatar": {
+              "href": "https://bitbucket.org/workspaces/zpawn/avatar/?ts=1690793838"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/"
+            },
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn"
+            }
+          }
+        },
+        "project": {
+          "type": "project",
+          "key": "DPP",
+          "uuid": "{project001}",
+          "name": "Deskpro Public Rroject",
+          "links": {
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn/projects/DPP"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/workspace/projects/DPP"
+            },
+            "avatar": {
+              "href": "https://bitbucket.org/account/user/zpawn/projects/DPP/avatar/32?ts=1690382394"
+            }
+          }
+        },
+        "uuid": "{repository001}"
+      },
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/5"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab/issues/5/proposal-proposal-kind"
+        },
+        "comments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/5/comments"
+        },
+        "attachments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/5/attachments"
+        },
+        "watch": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/5/watch"
+        },
+        "vote": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/5/vote"
+        }
+      },
+      "title": "[proposal] Proposal kind",
+      "content": {
+        "type": "rendered",
+        "raw": "",
+        "markup": "markdown",
+        "html": ""
+      },
+      "reporter": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Bworkspace001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/user001?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Bworkspace001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{workspace001}",
+        "account_id": "user001",
+        "nickname": "zpawn"
+      },
+      "assignee": null,
+      "created_on": "2023-07-31T15:38:16.456571+00:00",
+      "edited_on": null,
+      "updated_on": "2023-07-31T15:38:17.577898+00:00",
+      "state": "new",
+      "kind": "proposal",
+      "milestone": null,
+      "component": null,
+      "priority": "critical",
+      "version": null,
+      "votes": 0,
+      "watches": 1
+    },
+    {
+      "type": "issue",
+      "id": 6,
+      "repository": {
+        "type": "repository",
+        "full_name": "zpawn/apps-lab",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab"
+          },
+          "html": {
+            "href": "https://bitbucket.org/zpawn/apps-lab"
+          },
+          "avatar": {
+            "href": "https://bytebucket.org/ravatar/%7Brepository001%7D?ts=default"
+          }
+        },
+        "name": "apps-lab",
+        "workspace": {
+          "type": "workspace",
+          "uuid": "{workspace001}",
+          "name": "My-own workspace",
+          "slug": "zpawn",
+          "links": {
+            "avatar": {
+              "href": "https://bitbucket.org/workspaces/zpawn/avatar/?ts=1690793838"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/"
+            },
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn"
+            }
+          }
+        },
+        "project": {
+          "type": "project",
+          "key": "DPP",
+          "uuid": "{project001}",
+          "name": "Deskpro Public Rroject",
+          "links": {
+            "self": {
+              "href": "https://api.bitbucket.org/2.0/workspaces/zpawn/projects/DPP"
+            },
+            "html": {
+              "href": "https://bitbucket.org/zpawn/workspace/projects/DPP"
+            },
+            "avatar": {
+              "href": "https://bitbucket.org/account/user/zpawn/projects/DPP/avatar/32?ts=1690382394"
+            }
+          }
+        },
+        "uuid": "{repository001}"
+      },
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/6"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab/issues/6/task-issue-with-task-kind"
+        },
+        "comments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/6/comments"
+        },
+        "attachments": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/6/attachments"
+        },
+        "watch": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/6/watch"
+        },
+        "vote": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/6/vote"
+        }
+      },
+      "title": "[task] issue with task kind",
+      "content": {
+        "type": "rendered",
+        "raw": "",
+        "markup": "markdown",
+        "html": ""
+      },
+      "reporter": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Bworkspace001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/user001?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Bworkspace001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{workspace001}",
+        "account_id": "user001",
+        "nickname": "zpawn"
+      },
+      "assignee": null,
+      "created_on": "2023-07-31T15:38:45.569250+00:00",
+      "edited_on": null,
+      "updated_on": "2023-07-31T15:40:42.905972+00:00",
+      "state": "resolved",
+      "kind": "task",
+      "milestone": null,
+      "component": null,
+      "priority": "critical",
+      "version": null,
+      "votes": 0,
+      "watches": 1
+    }
+  ],
+  "pagelen": 100,
+  "size": 6,
+  "page": 1
+}

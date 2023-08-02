@@ -20,6 +20,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^4.32.0
     version: 4.32.0(react-dom@18.2.0)(react@18.2.0)
+  date-fns:
+    specifier: ^2.30.0
+    version: 2.30.0
   iframe-resizer:
     specifier: ^4.3.6
     version: 4.3.6
@@ -127,6 +130,9 @@ devDependencies:
   eslint-plugin-react-hooks:
     specifier: 4.3.0
     version: 4.3.0(eslint@8.4.1)
+  intersection-observer:
+    specifier: ^0.12.2
+    version: 0.12.2
   jest:
     specifier: ^29.6.1
     version: 29.6.1
@@ -2223,6 +2229,13 @@ packages:
       whatwg-url: 11.0.0
     dev: true
 
+  /date-fns@2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
+    engines: {node: '>=0.11'}
+    dependencies:
+      '@babel/runtime': 7.22.6
+    dev: false
+
   /debug@4.3.4(supports-color@5.5.0):
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -3201,6 +3214,10 @@ packages:
       get-intrinsic: 1.2.1
       has: 1.0.3
       side-channel: 1.0.4
+    dev: true
+
+  /intersection-observer@0.12.2:
+    resolution: {integrity: sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==}
     dev: true
 
   /intl-messageformat@9.13.0:

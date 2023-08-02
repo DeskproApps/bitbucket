@@ -3,10 +3,7 @@ import { AUTH_URL } from "../../constants";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { AccessToken } from "./types";
 
-const getAccessTokenService = (
-  client: IDeskproClient,
-  code: string,
-) => {
+const getAccessTokenService = (client: IDeskproClient, code: string) => {
   const data = new FormData();
   data.append("grant_type", "authorization_code");
   data.append("code", code);
