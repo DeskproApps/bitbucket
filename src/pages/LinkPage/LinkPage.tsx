@@ -11,7 +11,7 @@ import {
 import { useSetTitle, useAsyncError } from "../../hooks";
 import { useSearchIssues } from "./hooks";
 import { setEntityService } from "../../services/deskpro";
-import { getFilteredIssues } from "../../utils";
+import { getFilteredIssues, generateEntityId } from "../../utils";
 import { LinkIssues } from "../../components";
 import type { FC } from "react";
 import type { TicketContext } from "../../types";
@@ -55,7 +55,10 @@ const LinkPage: FC = () => {
     setIsSubmitting(true);
 
     return Promise.all([
-      ...selectedIssues.map((issue) => setEntityService(client, ticketId, `${issue.id}`)),
+      ...selectedIssues.map((issue) => {
+        const issueData = generateEntityId(issue);
+        return !issueData ? Promise.resolve() : setEntityService(client, ticketId, issueData)
+      }),
     ])
       .then(() => {
         setIsSubmitting(false);

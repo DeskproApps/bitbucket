@@ -1,4 +1,4 @@
-import { useCallback } from "react"
+import { useMemo, useCallback } from "react"
 import get from "lodash/get";
 import { Title, TwoProperties, Property } from "@deskpro/app-sdk";
 import { format } from "../../utils/date";
@@ -19,7 +19,8 @@ type Props = {
 };
 
 const IssueItem: FC<Props> = ({ issue, onClickTitle }) => {
-  const issueId = get(issue, ["id"]);
+  const issueId = useMemo(() => get(issue, ["id"]), [issue]);
+  const assignee = useMemo(() => get(issue, ["assignee"]), [issue]);
 
   const onClick: MouseEventHandler<HTMLAnchorElement> = useCallback((e) => {
     e.preventDefault();
@@ -72,17 +73,19 @@ const IssueItem: FC<Props> = ({ issue, onClickTitle }) => {
       />
       <Property
         label="Deskpro Tickets"
-        text={<DeskproTickets entityId={`${get(issue, ["id"])}`}/>}
+        text={<DeskproTickets issue={issue}/>}
       />
-      <Property
-        label="Asignees"
-        text={(
-          <Member
-            name={get(issue, ["assignee", "display_name"])}
-            avatarUrl={get(issue, ["assignee", "links", "avatar", "href"])}
-          />
-        )}
-      />
+      {assignee && (
+        <Property
+          label="Asignees"
+          text={(
+            <Member
+              name={get(assignee, ["display_name"])}
+              avatarUrl={get(assignee, ["links", "avatar", "href"])}
+            />
+          )}
+        />
+      )}
     </>
   );
 };
