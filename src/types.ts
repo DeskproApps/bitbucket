@@ -1,6 +1,7 @@
 import type { To, ParamKeyValuePair } from "react-router-dom";
 import type { DropdownValueType } from "@deskpro/deskpro-ui";
 import type { Context, IDeskproClient } from "@deskpro/app-sdk";
+import type { Issue } from "./services/bitbucket/types";
 
 /** Common types */
 export type Maybe<T> = T | undefined | null;
@@ -49,6 +50,7 @@ export type NavigateToChangePage = { type: "changePage", path: To };
 export type EventPayload =
   | NavigateToChangePage
   | { type: "logout" }
+  | { type: "unlink", issue: Issue }
 ;
 
 /** Entities */

@@ -1,6 +1,6 @@
 export { Button, AnchorButton } from "./Button";
 export { ErrorBlock } from "./ErrorBlock";
-export { Container } from "./Layout";
+export { Container, Styled } from "./Layout";
 export { Label } from "./Label";
 export { Search } from "./Search";
 export { Select } from "./Select";
@@ -12,3 +12,6 @@ export { DeskproTickets } from "./DeskproTickets";
 export { TextWithLink } from "./TextWithLink";
 export { Member } from "./Member";
 export { Status } from "./Status";
+export { Markdown } from "./Markdown";
+export { Comment } from "./Comment";
+export { Content } from "./Content";

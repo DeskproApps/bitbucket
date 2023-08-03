@@ -128,6 +128,19 @@ export type RepositoryShort = {
   workspace: WorkspaceShort,
 };
 
+export type Content = {
+  type: "rendered",
+  raw: string,
+  markup: "markdown"|"creole"|"plaintext",
+  html: string,
+};
+
+export type Milestone = {
+  name: string,
+  links: {
+    self: Link,
+  },
+}
 
 export type Issue = {
   type: "issue",
@@ -142,23 +155,31 @@ export type Issue = {
     watch: Link,
     vote: Link,
   },
-  content: {
-    type: "rendered",
-    raw: string,
-    markup: "markdown"|"creole"|"plaintext", // "markdown",
-    html: string,
-  },
+  content: Content,
   reporter: User,
   assignee: User,
   created_on: DateTime,
   edited_on: Maybe<DateTime>,
   updated_on: DateTime,
-  state: "submitted"|"new"|"open"|"resolved"|"on hold"|"invalid"|"duplicate"|"wontfix"|"closed", // "new",
-  kind: "bug"|"enhancement"|"proposal"|"task", // "bug",
-  milestone: null,
+  state: "submitted"|"new"|"open"|"resolved"|"on hold"|"invalid"|"duplicate"|"wontfix"|"closed",
+  kind: "bug"|"enhancement"|"proposal"|"task",
+  milestone: Maybe<Milestone>,
   component: null,
-  priority: "trivial"|"minor"|"major"|"critical"|"blocker", // "minor",
+  priority: "trivial"|"minor"|"major"|"critical"|"blocker",
   version: null,
   votes: number,
   watches: number,
 };
+
+export type Comment = {
+  type: "issue_comment",
+  id: number,
+  created_on: DateTime,
+  updated_on: Maybe<DateTime>,
+  content: Content,
+  user: User
+  links: {
+    self: Link,
+    html: Link,
+  }
+}

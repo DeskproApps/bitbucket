@@ -25,13 +25,13 @@ const useLinkedIssues: UseLinkedIssues = () => {
     { enabled: Boolean(ticketId) }
   );
 
-  const fetchedIssues = useQueriesWithClient((get(linkedIds, ["data"], []) || []).map((issueId) => {
-    const data = parseEntityId(issueId);
+  const fetchedIssues = useQueriesWithClient((get(linkedIds, ["data"], []) || []).map((issueMeta) => {
+    const meta = parseEntityId(issueMeta);
     return {
-      queryKey: [QueryKey.ISSUE, data],
-      queryFn: (client) => (!data
+      queryKey: [QueryKey.ISSUE, issueMeta],
+      queryFn: (client) => (!meta
         ? Promise.resolve()
-        : getIssueService(client, data.fullName, data.issueId)
+        : getIssueService(client, meta.fullName, meta.issueId)
       ) as Promise<void|Issue>,
       enabled: Boolean(size(linkedIds)),
       useErrorBoundary: false,

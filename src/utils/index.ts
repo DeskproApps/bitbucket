@@ -4,3 +4,4 @@ export { getOption } from "./getOption";
 export { getFilteredIssues } from "./getFilteredIssues";
 export { parseEntityId } from "./parseEntityId";
 export { generateEntityId } from "./generateEntityId";
+export { addBlankTargetToLinks } from "./addBlankTargetToLinks";

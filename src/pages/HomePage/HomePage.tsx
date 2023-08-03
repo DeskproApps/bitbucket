@@ -1,10 +1,27 @@
+import { useCallback } from "react";
+import { useNavigate, createSearchParams } from "react-router-dom";
 import { useDeskproElements, LoadingSpinner } from "@deskpro/app-sdk";
 import { useSetTitle, useSetBadgeCount, useLinkedIssues } from "../../hooks";
 import { Home } from "../../components";
 import type { FC } from "react";
+import type { Issue, Repository } from "../../services/bitbucket/types";
 
 const HomePage: FC = () => {
+  const navigate = useNavigate();
   const { issues, isLoading } = useLinkedIssues();
+
+  const onNavigateToIssue = useCallback((
+    issueId: Issue["id"],
+    fullName: Repository["full_name"],
+  ) => {
+    navigate({
+      pathname: "/issue/view",
+      search: `?${createSearchParams({
+        issueId: `${issueId}`,
+        fullName,
+      })}`,
+    });
+  }, [navigate]);
 
   useSetTitle("Bitbucket");
   useSetBadgeCount(issues);
@@ -34,7 +51,7 @@ const HomePage: FC = () => {
   }
 
   return (
-    <Home issues={issues} />
+    <Home issues={issues} onNavigateToIssue={onNavigateToIssue} />
   );
 };
 

@@ -15,6 +15,7 @@ enum QueryKey {
   ISSUES_BY_REPO = "issuesByRepo",
   LINKED_TASKS = "linkedTasks",
   ISSUE = "issue",
+  ISSUE_COMMENTS = "issueComments",
 }
 
 export { queryClient, QueryKey };
