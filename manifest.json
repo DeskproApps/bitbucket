@@ -2,7 +2,7 @@
   "name": "@deskpro-apps/bitbucket",
   "title": "Bitbucket",
   "description": "View and edit your Bitbucket issues when interacting with related Deskpro tickets",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
