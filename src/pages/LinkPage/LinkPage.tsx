@@ -36,8 +36,10 @@ const LinkPage: FC = () => {
   const onChangeSelectedIssue = useCallback((issue: Issue) => {
     let newSelectedIssues = cloneDeep(selectedIssues);
 
-    if (selectedIssues.some(({ id }) => issue.id === id)) {
-      newSelectedIssues = selectedIssues.filter((selectedIssue) => selectedIssue.id !== issue.id);
+    if (selectedIssues.some((selectedIssue) => generateEntityId(issue) === generateEntityId(selectedIssue))) {
+      newSelectedIssues = selectedIssues.filter((selectedIssue) => {
+        return generateEntityId(selectedIssue) !== generateEntityId(issue);
+      });
     } else {
       newSelectedIssues.push(issue);
     }
