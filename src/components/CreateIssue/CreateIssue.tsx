@@ -15,7 +15,7 @@ const CreateIssue: FC<Props> = ({
 }) => {
   return (
     <Container>
-      <Navigation selected="two" onOneNavigate={onNavigateToLink} />
+      <Navigation selected="two" onOneNavigate={onNavigateToLink}/>
       <IssueForm error={error} onSubmit={onSubmit} onCancel={onCancel}/>
     </Container>
   );
