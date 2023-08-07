@@ -49,6 +49,8 @@ const LinkPage: FC = () => {
 
   const onCancel = useCallback(() => navigate("/home"), [navigate]);
 
+  const onNavigateToCreate = useCallback(() => navigate("/issue/create"), [navigate]);
+
   const onLinkIssues = useCallback(() => {
     if (!client || !ticketId || !size(selectedIssues)) {
       return;
@@ -73,10 +75,10 @@ const LinkPage: FC = () => {
 
   useDeskproElements(({ clearElements, registerElement }) => {
     clearElements();
-    registerElement("refresh", {type: "refresh_button"});
+    registerElement("refresh", { type: "refresh_button" });
     registerElement("home", {
       type: "home_button",
-      payload: {type: "changePage", path: "/home"},
+      payload: { type: "changePage", path: "/home" },
     });
   });
 
@@ -98,6 +100,7 @@ const LinkPage: FC = () => {
       selectedIssues={selectedIssues}
       issues={getFilteredIssues(issues, { query: searchQuery })}
       onChangeSelectedIssue={onChangeSelectedIssue}
+      onNavigateToCreate={onNavigateToCreate}
     />
   );
 };

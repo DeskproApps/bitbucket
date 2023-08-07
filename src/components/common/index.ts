@@ -15,3 +15,6 @@ export { Status } from "./Status";
 export { Markdown } from "./Markdown";
 export { Comment } from "./Comment";
 export { Content } from "./Content";
+export { Navigation } from "./Navigation";
+export { TextArea } from "./TextArea";
+export { Attach } from "./Attach";

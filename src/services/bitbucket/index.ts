@@ -5,3 +5,7 @@ export { getIssuesService } from "./getIssuesService";
 export { getRepositoriesService } from "./getRepositoriesService";
 export { getIssueService } from "./getIssueService";
 export { getIssueCommentsService } from "./getIssueCommentsService";
+export { getWorkspacesService } from "./getWorkspacesService";
+export { getWorkspaceMembersService } from "./getWorkspaceMembersService";
+export { createIssueService } from "./createIssueService";
+export { uploadAttachToIssueService } from "./uploadAttachToIssueService";
