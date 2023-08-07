@@ -13,11 +13,13 @@ const queryClient = new QueryClient({
 });
 
 enum QueryKey {
+  WORKSPACES = "workspaces",
   REPOSITORIES = "repositories",
   ISSUES_BY_REPO = "issuesByRepo",
   LINKED_TASKS = "linkedTasks",
   ISSUE = "issue",
   ISSUE_COMMENTS = "issueComments",
+  MEMBERS_BY_WORKSPACE = "membersByWorkspace",
 }
 
 export { queryClient, QueryKey };

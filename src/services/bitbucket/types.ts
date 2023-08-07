@@ -29,7 +29,7 @@ export type Pagination<T> = {
   pagelen: number,
   next?: string,
   previous?: string,
-  values: T,
+  values: T[],
 };
 
 export type Link = { href: string, name?: string };
@@ -58,39 +58,7 @@ export type Project = {
   },
 };
 
-export type Repository = {
-  type: "repository",
-  uuid: string,
-  name: string,
-  full_name: string,
-  description: string,
-  links: {
-    self: Link,
-    html: Link,
-    avatar: Link,
-    pullrequests: Link,
-    commits: Link,
-    forks: Link,
-    watchers: Link,
-    downloads: Link,
-    clone: Link,
-    hooks: Link,
-  },
-  is_private: boolean,
-  scm: string,
-  owner: User,
-  created_on: DateTime,
-  updated_on: DateTime,
-  size: number,
-  language: string,
-  has_issues: boolean,
-  has_wiki: boolean,
-  fork_policy: "allow_forks"|"no_public_forks"|"no_forks",
-  project: Project,
-  mainbranch: { type: "branch", name: string },
-};
-
-export type WorkspaceShort = {
+export type Workspace = {
   type: "workspace",
   uuid: string,
   name: string,
@@ -102,19 +70,7 @@ export type WorkspaceShort = {
   }
 };
 
-export type ProjectShort = {
-  type: "project",
-  uuid: string,
-  key: string,
-  name: string,
-  links: {
-    self: Link,
-    html: Link,
-    avatar: Link
-  }
-};
-
-export type RepositoryShort = {
+export type Repository = {
   type: "repository",
   uuid: string,
   name: string,
@@ -124,8 +80,8 @@ export type RepositoryShort = {
     html: Link,
     avatar: Link
   },
-  project: ProjectShort,
-  workspace: WorkspaceShort,
+  project: Project,
+  workspace: Workspace,
 };
 
 export type Content = {
@@ -146,7 +102,7 @@ export type Issue = {
   type: "issue",
   id: number,
   title: string,
-  repository: RepositoryShort,
+  repository: Repository,
   links: {
     self: Link,
     html: Link,

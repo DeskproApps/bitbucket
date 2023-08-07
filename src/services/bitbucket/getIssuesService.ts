@@ -6,7 +6,7 @@ const getIssuesService = (
   client: IDeskproClient,
   fullName: string,
 ) => {
-  return baseRequest<Pagination<Issue[]>>(client, {
+  return baseRequest<Pagination<Issue>>(client, {
     url: `/repositories/${fullName}/issues`,
     queryParams: [
       "pagelen=100",

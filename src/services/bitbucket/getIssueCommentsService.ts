@@ -7,7 +7,7 @@ const getIssueCommentsService = (
   fullName: Repository["full_name"],
   issueId: Issue["id"],
 ) => {
-  return baseRequest<Pagination<Comment[]>>(client, {
+  return baseRequest<Pagination<Comment>>(client, {
     url: `/repositories/${fullName}/issues/${issueId}/comments`,
     queryParams: [
       "pagelen=100",
