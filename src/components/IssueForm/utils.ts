@@ -46,6 +46,7 @@ const getInitValues = (): FormValidationSchema => {
 const getIssueValues = (values: FormValidationSchema): IssueValues => {
   return {
     title: values.title,
+    ...(!values.description ? {} : { content: { markup: "markdown", raw: values.description }}),
     ...(!values.kind ? {} : { kind: values.kind }),
     ...(!values.priority ? {} : { priority: values.priority }),
     ...(!values.assignee ? {} : { assignee: { uuid: values.assignee }}),

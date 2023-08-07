@@ -7,6 +7,7 @@ export type FormValidationSchema = z.infer<typeof validationSchema>;
 
 export type IssueValues = {
   title: Issue["title"],
+  description?: Issue["content"],
   kind?: Issue["kind"],
   priority?: Issue["priority"],
   assignee?: { uuid: User["uuid"] },

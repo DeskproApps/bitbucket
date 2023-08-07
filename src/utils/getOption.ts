@@ -1,3 +1,4 @@
+import startCase from "lodash/startCase";
 import type { DropdownValueType } from "@deskpro/deskpro-ui";
 import type { Option } from "../types";
 
@@ -7,7 +8,7 @@ const getOption = <Value>(
   description?: DropdownValueType<Value>["description"],
 ): Option<Value> => ({
   value,
-  label: label || `${value}`,
+  label: label || `${startCase(value as string)}`,
   key: `${value}`,
   type: "value",
   ...(description ? { description } : {}),
