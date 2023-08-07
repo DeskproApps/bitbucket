@@ -12,14 +12,11 @@ const HomePage: FC = () => {
 
   const onNavigateToIssue = useCallback((
     issueId: Issue["id"],
-    fullName: Repository["full_name"],
+    repo: Repository["full_name"],
   ) => {
     navigate({
       pathname: "/issue/view",
-      search: `?${createSearchParams({
-        issueId: `${issueId}`,
-        fullName,
-      })}`,
+      search: `?${createSearchParams({ issueId: `${issueId}`, repo })}`,
     });
   }, [navigate]);
 

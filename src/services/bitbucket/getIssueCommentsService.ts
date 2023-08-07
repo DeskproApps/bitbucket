@@ -4,11 +4,11 @@ import type { Issue, Repository, Pagination, Comment } from "./types";
 
 const getIssueCommentsService = (
   client: IDeskproClient,
-  fullName: Repository["full_name"],
+  repo: Repository["full_name"],
   issueId: Issue["id"],
 ) => {
   return baseRequest<Pagination<Comment>>(client, {
-    url: `/repositories/${fullName}/issues/${issueId}/comments`,
+    url: `/repositories/${repo}/issues/${issueId}/comments`,
     queryParams: [
       "pagelen=100",
       "sort=-created_on",

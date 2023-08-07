@@ -42,7 +42,7 @@
     "whitelist": [
       {
         "url": "https://api.bitbucket.org/.*",
-        "methods": ["GET", "POST"],
+        "methods": ["GET", "POST", "PUT"],
         "timeout": 20
       },
       {

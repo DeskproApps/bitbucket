@@ -12,6 +12,7 @@ describe("IssueForm", () => {
     test("should return full task values", () => {
       expect(getIssueValues(mockValues as never)).toStrictEqual({
         title: "Jest issue",
+        content: { markup: "markdown", raw: "this is description" },
         kind: "bug",
         priority: "major",
         assignee: { uuid: "user-001" },

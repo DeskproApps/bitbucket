@@ -1,13 +1,13 @@
 import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
-import type { Issue, Pagination } from "./types";
+import type { Issue, Pagination, Repository } from "./types";
 
 const getIssuesService = (
   client: IDeskproClient,
-  fullName: string,
+  repo: Repository["full_name"],
 ) => {
   return baseRequest<Pagination<Issue>>(client, {
-    url: `/repositories/${fullName}/issues`,
+    url: `/repositories/${repo}/issues`,
     queryParams: [
       "pagelen=100",
       `fields=${encodeURIComponent("+values.repository.project,+values.repository.workspace")}`,

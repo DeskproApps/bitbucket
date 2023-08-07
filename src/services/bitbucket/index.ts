@@ -9,3 +9,4 @@ export { getWorkspacesService } from "./getWorkspacesService";
 export { getWorkspaceMembersService } from "./getWorkspaceMembersService";
 export { createIssueService } from "./createIssueService";
 export { uploadAttachToIssueService } from "./uploadAttachToIssueService";
+export { updateIssueService } from "./updateIssueService";

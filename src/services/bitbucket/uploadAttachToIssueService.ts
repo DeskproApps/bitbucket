@@ -4,12 +4,12 @@ import type { Issue, Repository } from "./types";
 
 const uploadAttachToIssueService = (
   client: IDeskproClient,
-  fullName: Repository["full_name"],
+  repo: Repository["full_name"],
   issueId: Issue["id"],
   data: FormData,
 ) => {
   return baseRequest<void>(client, {
-    url: `/repositories/${fullName}/issues/${issueId}/attachments`,
+    url: `/repositories/${repo}/issues/${issueId}/attachments`,
     method: "POST",
     data,
   });

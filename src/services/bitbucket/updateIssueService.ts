@@ -2,16 +2,17 @@ import { baseRequest } from "./baseRequest";
 import type { IDeskproClient } from "@deskpro/app-sdk";
 import type { Issue, Repository } from "./types";
 
-const createIssueService = (
+const updateIssueService = (
   client: IDeskproClient,
   repo: Repository["full_name"],
-  data: object
+  issueId: Issue["id"],
+  data: object,
 ) => {
   return baseRequest<Issue>(client, {
-    url: `/repositories/${repo}/issues`,
-    method: "POST",
+    url: `/repositories/${repo}/issues/${issueId}`,
+    method: "PUT",
     data,
   });
 };
 
-export { createIssueService };
+export { updateIssueService };

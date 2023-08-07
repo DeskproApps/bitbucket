@@ -8,28 +8,28 @@ import { QueryKey } from "../../query";
 import type { Maybe } from "../../types";
 import type { Issue, Repository, Comment } from "../../services/bitbucket/types";
 
-type UseIssue = (issueId: Maybe<Issue["id"]>, fullName: Maybe<Repository["full_name"]>) => {
+type UseIssue = (issueId: Maybe<Issue["id"]>, repo: Maybe<Repository["full_name"]>) => {
   isLoading: boolean,
   issue: Issue,
   comments: Comment[],
 };
 
-const useIssue: UseIssue = (issueId, fullName) => {
+const useIssue: UseIssue = (issueId, repo) => {
   const pseudoIssue = {
     id: issueId as Issue["id"],
-    repository: { full_name: fullName as Repository["full_name"] }
+    repository: { full_name: repo as Repository["full_name"] }
   };
 
   const issue = useQueryWithClient(
     [QueryKey.ISSUE, generateEntityId(pseudoIssue as Issue) as string],
-    (client) => getIssueService(client, fullName as Repository["full_name"], issueId as Issue["id"]),
-    { enabled: Boolean(issueId) && Boolean(fullName) },
+    (client) => getIssueService(client, repo as Repository["full_name"], issueId as Issue["id"]),
+    { enabled: Boolean(issueId) && Boolean(repo) },
   );
 
   const fetchedComments = useQueryWithClient(
     [QueryKey.ISSUE_COMMENTS, generateEntityId(pseudoIssue as Issue) as string],
-    (client) => getIssueCommentsService(client, fullName as Repository["full_name"], issueId as Issue["id"]),
-    { enabled: Boolean(issueId) && Boolean(fullName) },
+    (client) => getIssueCommentsService(client, repo as Repository["full_name"], issueId as Issue["id"]),
+    { enabled: Boolean(issueId) && Boolean(repo) },
   );
 
   const comments = useMemo(() => {

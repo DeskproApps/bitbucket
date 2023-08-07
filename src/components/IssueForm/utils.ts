@@ -4,7 +4,12 @@ import size from "lodash/size";
 import { z } from "zod";
 import { getOption } from "../../utils";
 import { Member } from "../common";
-import type { Workspace, Repository, User } from "../../services/bitbucket/types";
+import type {
+  User,
+  Issue,
+  Workspace,
+  Repository,
+} from "../../services/bitbucket/types";
 import type { AttachmentFile } from "../common/Attach";
 import type { FormValidationSchema, IssueValues } from "./types";
 
@@ -30,15 +35,15 @@ const validationSchema = z.object({
   attachments: z.array(z.any()).optional(),
 });
 
-const getInitValues = (): FormValidationSchema => {
+const getInitValues = (issue?: Issue): FormValidationSchema => {
   return {
-    title: "",
-    description: "",
-    workspace: "",
-    repository: "",
-    assignee: "",
-    kind: "bug",
-    priority: "major",
+    title: get(issue, ["title"], ""),
+    description: get(issue, ["content", "raw"], ""),
+    workspace: get(issue, ["repository", "workspace", "slug"], ""),
+    repository: get(issue, ["repository", "full_name"], ""),
+    assignee: get(issue, ["assignee", "uuid"], ""),
+    kind: get(issue, ["kind"], "bug"),
+    priority: get(issue, ["priority"], "major"),
     attachments: [],
   };
 };
@@ -46,6 +51,7 @@ const getInitValues = (): FormValidationSchema => {
 const getIssueValues = (values: FormValidationSchema): IssueValues => {
   return {
     title: values.title,
+    ...(!values.description ? {} : { content: { markup: "markdown", raw: values.description }}),
     ...(!values.kind ? {} : { kind: values.kind }),
     ...(!values.priority ? {} : { priority: values.priority }),
     ...(!values.assignee ? {} : { assignee: { uuid: values.assignee }}),
