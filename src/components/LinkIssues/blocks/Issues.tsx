@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import size from "lodash/size";
 import { Checkbox } from "@deskpro/deskpro-ui";
 import { LoadingSpinner, HorizontalDivider } from "@deskpro/app-sdk";
+import { generateEntityId } from "../../../utils";
 import { IssueItem } from "../../IssueItem";
 import { NoFound, Card } from "../../common";
 import type { FC } from "react";
@@ -34,7 +35,9 @@ const Issues: FC<Props> = ({
                   <Card.Media>
                     <Checkbox
                       size={12}
-                      checked={selectedIssues.some(({ id }) => issue.id === id)}
+                      checked={selectedIssues.some((selectedIssue) => {
+                        return generateEntityId(issue) === generateEntityId(selectedIssue);
+                      })}
                       onChange={() => onChangeSelectedIssue(issue)}
                       containerStyle={{ marginTop: 4 }}
                     />

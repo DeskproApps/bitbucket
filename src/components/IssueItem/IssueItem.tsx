@@ -77,7 +77,7 @@ const IssueItem: FC<Props> = ({ issue, onClickTitle }) => {
       />
       {assignee && (
         <Property
-          label="Asignees"
+          label="Asignee"
           text={(
             <Member
               name={get(assignee, ["display_name"])}

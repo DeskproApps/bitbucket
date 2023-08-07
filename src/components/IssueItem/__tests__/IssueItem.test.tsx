@@ -21,7 +21,7 @@ describe("IssueItem", () => {
     expect(await findByText(/26 Jul, 2023/i)).toBeInTheDocument();
     expect(await findByText(/#1/i)).toBeInTheDocument();
     expect(await findByText(/My-own workspace/i)).toBeInTheDocument();
-    expect(await findByText(/Deskpro Public Rroject/i)).toBeInTheDocument();
+    expect(await findByText(/Deskpro Public Project/i)).toBeInTheDocument();
     expect(await findByText(/apps-lab/i)).toBeInTheDocument();
     expect(await findByText(/100500/i)).toBeInTheDocument();
     expect(await findByText(/Ilya Makarov/i)).toBeInTheDocument();

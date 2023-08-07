@@ -5,3 +5,4 @@ export { removeAccessTokenService } from "./removeAccessTokenService";
 export { removeRefreshTokenService } from "./removeRefreshTokenService";
 export { getEntityAssociationCountService } from "./getEntityAssociationCountService";
 export { setEntityService } from "./setEntityService";
+export { deleteEntityService } from "./deleteEntityService";

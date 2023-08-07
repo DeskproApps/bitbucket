@@ -4,3 +4,4 @@ export { useSetBadgeCount } from "./useSetBadgeCount";
 export { useLogout } from "./useLogout";
 export { useQueriesWithClient } from "./useQueriesWithClient";
 export { useLinkedIssues } from "./useLinkedIssues";
+export { useUnlinkIssue } from "./useUnlinkIssue";

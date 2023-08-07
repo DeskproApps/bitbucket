@@ -1,0 +1,83 @@
+{
+  "values": [
+    {
+      "type": "issue_comment",
+      "id": 54321,
+      "created_on": "2023-08-02T13:07:52.656791+00:00",
+      "updated_on": null,
+      "content": {
+        "type": "rendered",
+        "raw": "hey ho, let’s go!!!",
+        "markup": "markdown",
+        "html": "<p>hey ho, let’s go!!!</p>"
+      },
+      "user": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Buser001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/290bf0534ce3c93040db8e862f744d81?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Buser001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{user001}",
+        "account_id": "account001",
+        "nickname": "zpawn"
+      },
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/3/comments/54321"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab/issues/3#comment-54321"
+        }
+      }
+    },
+    {
+      "type": "issue_comment",
+      "id": 12345,
+      "created_on": "2023-08-01T07:39:09.270462+00:00",
+      "updated_on": null,
+      "content": {
+        "type": "rendered",
+        "raw": "Duplicate of #4.",
+        "markup": "markdown",
+        "html": "<p>Duplicate of <a href=\"https://bitbucket.org/zpawn/apps-lab/issues/4/enhancement-issue-with-another-kind\" rel=\"nofollow\" title=\"[enhancement] Issue with another kind\" class=\"ap-connect-link\">#4</a>.</p>"
+      },
+      "user": {
+        "display_name": "Ilya Makarov",
+        "links": {
+          "self": {
+            "href": "https://api.bitbucket.org/2.0/users/%7Buser001%7D"
+          },
+          "avatar": {
+            "href": "https://secure.gravatar.com/avatar/290bf0534ce3c93040db8e862f744d81?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+          },
+          "html": {
+            "href": "https://bitbucket.org/%7Buser001%7D/"
+          }
+        },
+        "type": "user",
+        "uuid": "{user001}",
+        "account_id": "account001",
+        "nickname": "zpawn"
+      },
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/3/comments/12345"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/apps-lab/issues/3#comment-12345"
+        }
+      }
+    }
+  ],
+  "pagelen": 100,
+  "size": 2,
+  "page": 1
+}
