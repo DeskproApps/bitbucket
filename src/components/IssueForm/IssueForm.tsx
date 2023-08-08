@@ -22,7 +22,13 @@ import type { FC } from "react";
 import type { Issue, Repository, Workspace, User } from "../../services/bitbucket/types";
 import type { FormValidationSchema, Props } from "./types";
 
-const IssueForm: FC<Props> = ({ onSubmit, onCancel, isEditMode, error }) => {
+const IssueForm: FC<Props> = ({
+  issue,
+  error,
+  onSubmit,
+  onCancel,
+  isEditMode,
+}) => {
   const {
     watch,
     register,
@@ -30,7 +36,7 @@ const IssueForm: FC<Props> = ({ onSubmit, onCancel, isEditMode, error }) => {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<FormValidationSchema>({
-    defaultValues: getInitValues(),
+    defaultValues: getInitValues(issue),
     resolver: zodResolver(validationSchema),
   });
   const {

@@ -1,5 +1,6 @@
+import get from "lodash/get";
 import toNumber from "lodash/toNumber";
-import { useSearchParams } from "react-router-dom";
+import { createSearchParams, useSearchParams } from "react-router-dom";
 import {
   LoadingSpinner,
   useDeskproElements,
@@ -12,9 +13,9 @@ import type { FC } from "react";
 const ViewIssuePage: FC = () => {
   const [searchParams] = useSearchParams();
   const issueId = searchParams.get("issueId");
-  const fullName = searchParams.get("fullName");
+  const repo = searchParams.get("repo");
 
-  const { issue, comments, isLoading } = useIssue(toNumber(issueId), fullName);
+  const { issue, comments, isLoading } = useIssue(toNumber(issueId), repo);
 
   useSetTitle(`#${issueId}`);
 
@@ -24,6 +25,16 @@ const ViewIssuePage: FC = () => {
     registerElement("home", {
       type: "home_button",
       payload: { type: "changePage", path: "/home" },
+    });
+    registerElement("edit", {
+      type: "edit_button",
+      payload: { type: "changePage", path: {
+          pathname: `/issue/edit`,
+          search: `?${createSearchParams({
+            issueId: `${get(issue, ["id"])}`,
+            repo: get(issue, ["repository", "full_name"]),
+          })}`,
+      }}
     });
     registerElement("menu", {
       type: "menu",

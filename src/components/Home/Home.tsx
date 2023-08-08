@@ -9,7 +9,7 @@ import type { Issue, Repository } from "../../services/bitbucket/types";
 
 type Props = {
   issues: Issue[],
-  onNavigateToIssue: (issueId: Issue["id"], fullName: Repository["full_name"]) => void,
+  onNavigateToIssue: (issueId: Issue["id"], repo: Repository["full_name"]) => void,
 }
 
 const Home: FC<Props> = ({ issues, onNavigateToIssue }) => {

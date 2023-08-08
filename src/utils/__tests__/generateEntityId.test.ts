@@ -5,7 +5,7 @@ import { mockIssues } from "../../../testing";
 describe("generateEntityId", () => {
   test("should return issue data for linking to the ticket", () => {
     expect(generateEntityId(mockIssues.values[0] as never))
-      .toEqual("{\"issueId\":1,\"fullName\":\"zpawn/apps-lab\"}");
+      .toEqual("{\"issueId\":1,\"repo\":\"zpawn/apps-lab\"}");
   });
 
   test("should return undefined if isn't issue", () => {

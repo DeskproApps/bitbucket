@@ -31,7 +31,7 @@ const useLinkedIssues: UseLinkedIssues = () => {
       queryKey: [QueryKey.ISSUE, issueMeta],
       queryFn: (client) => (!meta
         ? Promise.resolve()
-        : getIssueService(client, meta.fullName, meta.issueId)
+        : getIssueService(client, meta.repo, meta.issueId)
       ) as Promise<void|Issue>,
       enabled: Boolean(size(linkedIds)),
       useErrorBoundary: false,

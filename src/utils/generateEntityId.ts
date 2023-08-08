@@ -3,14 +3,14 @@ import type { Issue } from "../services/bitbucket/types";
 
 const generateEntityId = (issue?: Issue): string|void => {
   const issueId = get(issue, ["id"]);
-  const fullName = get(issue, ["repository", "full_name"]);
+  const repo = get(issue, ["repository", "full_name"]);
 
-  if (!issueId || !fullName) {
+  if (!issueId || !repo) {
     return;
   }
 
   try {
-    return JSON.stringify({ issueId, fullName });
+    return JSON.stringify({ issueId, repo });
   } catch (e) {
     return;
   }

@@ -4,11 +4,11 @@ import type { Issue, Repository } from "./types";
 
 const getIssueService = (
   client: IDeskproClient,
-  fullName: Repository["full_name"],
+  repo: Repository["full_name"],
   issueId: Issue["id"],
 ) => {
   return baseRequest<Issue>(client, {
-    url: `/repositories/${fullName}/issues/${issueId}`,
+    url: `/repositories/${repo}/issues/${issueId}`,
     queryParams: `fields=${encodeURIComponent("+repository.project,+repository.workspace")}`,
   });
 };
