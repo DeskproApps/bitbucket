@@ -6,3 +6,5 @@ export { ViewIssue } from "./ViewIssue";
 export { IssueForm } from "./IssueForm";
 export { CreateIssue } from "./CreateIssue";
 export { EditIssue } from "./EditIssue";
+export { IssueCommentForm } from "./IssueCommentForm";
+export { CreateIssueComment } from "./CreateIssueComment";

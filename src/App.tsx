@@ -20,6 +20,7 @@ import {
   LoadingAppPage,
   CreateIssuePage,
   AdminCallbackPage,
+  CreateIssueCommentPage,
 } from "./pages";
 import type { FC } from "react";
 import type { EventPayload } from "./types";
@@ -74,6 +75,7 @@ const App: FC = () => {
         <Route path="/issue/view" element={<ViewIssuePage/>}/>)
         <Route path="/issue/create" element={<CreateIssuePage/>}/>)
         <Route path="/issue/edit" element={<EditIssuePage/>}/>)
+        <Route path="/issue/comment/create" element={<CreateIssueCommentPage/>}/>)
         <Route index element={<LoadingAppPage/>}/>
       </Routes>
       {!isAdmin && (<><br/><br/><br/></>)}

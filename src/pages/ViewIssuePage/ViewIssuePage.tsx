@@ -1,6 +1,7 @@
+import { useCallback } from "react";
 import get from "lodash/get";
 import toNumber from "lodash/toNumber";
-import { createSearchParams, useSearchParams } from "react-router-dom";
+import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
 import {
   LoadingSpinner,
   useDeskproElements,
@@ -11,11 +12,23 @@ import { ViewIssue } from "../../components";
 import type { FC } from "react";
 
 const ViewIssuePage: FC = () => {
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const issueId = searchParams.get("issueId");
   const repo = searchParams.get("repo");
 
   const { issue, comments, isLoading } = useIssue(toNumber(issueId), repo);
+
+  const onNavigateToAddComment = useCallback(() => {
+    if (!issueId || !repo) {
+      return;
+    }
+
+    navigate({
+      pathname: `/issue/comment/create`,
+      search: `?${createSearchParams({ issueId, repo })}`,
+    });
+  }, [navigate, issueId, repo]);
 
   useSetTitle(`#${issueId}`);
 
@@ -52,7 +65,11 @@ const ViewIssuePage: FC = () => {
   }
 
   return (
-    <ViewIssue issue={issue} comments={comments} />
+    <ViewIssue
+      issue={issue}
+      comments={comments}
+      onNavigateToAddComment={onNavigateToAddComment}
+    />
   );
 };
 

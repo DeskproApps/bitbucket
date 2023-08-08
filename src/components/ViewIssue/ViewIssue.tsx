@@ -6,14 +6,18 @@ import type { Issue, Comment } from "../../services/bitbucket/types";
 type Props = {
   issue: Issue,
   comments: Comment[],
+  onNavigateToAddComment: () => void,
 };
 
-const ViewIssue: FC<Props> = ({ issue, comments }) => {
+const ViewIssue: FC<Props> = ({ issue, comments, onNavigateToAddComment }) => {
   return (
     <>
       <Details issue={issue}/>
       <HorizontalDivider/>
-      <Comments comments={comments} />
+      <Comments
+        comments={comments}
+        onNavigateToAddComment={onNavigateToAddComment}
+      />
     </>
   );
 };
