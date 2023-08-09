@@ -6,7 +6,11 @@ import {
   useDeskproAppClient,
   useDeskproLatestAppContext,
 } from "@deskpro/app-sdk";
-import { useSetTitle, useAsyncError } from "../../hooks";
+import {
+  useSetTitle,
+  useAsyncError,
+  useLinkedAutoComment,
+} from "../../hooks";
 import { createIssueService, uploadAttachToIssueService } from "../../services/bitbucket";
 import { setEntityService } from "../../services/deskpro";
 import { generateEntityId } from "../../utils";
@@ -25,6 +29,7 @@ const CreateIssuePage: FC = () => {
   const { client } = useDeskproAppClient();
   const { context } = useDeskproLatestAppContext() as { context: TicketContext };
   const { asyncErrorHandler } = useAsyncError();
+  const { addLinkComment } = useLinkedAutoComment();
   const [error, setError] = useState<Maybe<string|string[]>>(null);
   const ticketId = useMemo(() => get(context, ["data", "ticket", "id"]), [context]);
 
@@ -44,14 +49,16 @@ const CreateIssuePage: FC = () => {
     setError(null);
 
     return createIssueService(client, repo, data)
-      .then((issue) => {
-        return !attachments
-          ? Promise.resolve(issue)
-          : uploadAttachToIssueService(client, repo, issue.id, attachments)
-            .then(() => issue)
-            .catch(() => issue);
-      })
-      .then((issue) => setEntityService(client, ticketId, generateEntityId(issue) as string))
+      .then((issue) => !attachments
+        ? Promise.resolve(issue)
+        : uploadAttachToIssueService(client, repo, issue.id, attachments)
+          .then(() => issue)
+          .catch(() => issue)
+      )
+      .then((issue) => Promise.all([
+        setEntityService(client, ticketId, generateEntityId(issue) as string),
+        addLinkComment(issue),
+      ]))
       .then(() => navigate("/home"))
       .catch((err) => {
         const error = get(err, ["data", "error", "message"]);
@@ -62,7 +69,7 @@ const CreateIssuePage: FC = () => {
           asyncErrorHandler(err);
         }
       });
-  }, [client, ticketId, navigate, asyncErrorHandler]);
+  }, [client, ticketId, navigate, asyncErrorHandler, addLinkComment]);
 
   useSetTitle("Link Issues");
 
