@@ -8,6 +8,7 @@ import {
 } from "@deskpro/app-sdk";
 import {
   useSetTitle,
+  useReplyBox,
   useAsyncError,
   useLinkedAutoComment,
 } from "../../hooks";
@@ -30,6 +31,7 @@ const CreateIssuePage: FC = () => {
   const { context } = useDeskproLatestAppContext() as { context: TicketContext };
   const { asyncErrorHandler } = useAsyncError();
   const { addLinkComment } = useLinkedAutoComment();
+  const { setSelectionState } = useReplyBox();
   const [error, setError] = useState<Maybe<string|string[]>>(null);
   const ticketId = useMemo(() => get(context, ["data", "ticket", "id"]), [context]);
 
@@ -58,6 +60,8 @@ const CreateIssuePage: FC = () => {
       .then((issue) => Promise.all([
         setEntityService(client, ticketId, generateEntityId(issue) as string),
         addLinkComment(issue),
+        setSelectionState(issue, true, "email"),
+        setSelectionState(issue, true, "note"),
       ]))
       .then(() => navigate("/home"))
       .catch((err) => {
@@ -69,7 +73,7 @@ const CreateIssuePage: FC = () => {
           asyncErrorHandler(err);
         }
       });
-  }, [client, ticketId, navigate, asyncErrorHandler, addLinkComment]);
+  }, [client, ticketId, navigate, asyncErrorHandler, addLinkComment, setSelectionState]);
 
   useSetTitle("Link Issues");
 

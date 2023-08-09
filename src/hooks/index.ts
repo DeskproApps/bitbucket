@@ -6,3 +6,4 @@ export { useQueriesWithClient } from "./useQueriesWithClient";
 export { useLinkedIssues } from "./useLinkedIssues";
 export { useUnlinkIssue } from "./useUnlinkIssue";
 export { useLinkedAutoComment } from "./useLinkedAutoComment";
+export { useReplyBox, ReplyBoxProvider } from "./useReplyBox";
