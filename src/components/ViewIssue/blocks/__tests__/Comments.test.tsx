@@ -13,7 +13,10 @@ describe("ViewIssue", () => {
 
     test("render", async () => {
       const { findByText } = render((
-        <Comments comments={mockComments.values as never}/>
+        <Comments
+          comments={mockComments.values as never}
+          onNavigateToAddComment={jest.fn()}
+        />
       ), { wrappers: { theme: true }});
 
       expect(await findByText(/Comments \(2\)/i)).toBeInTheDocument();
