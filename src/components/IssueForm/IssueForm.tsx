@@ -5,10 +5,10 @@ import { Input, Stack } from "@deskpro/deskpro-ui";
 import { LoadingSpinner } from "@deskpro/app-sdk";
 import { useFormDeps } from "./hooks";
 import {
-  kindOptions,
   getInitValues,
-  priorityOptions,
+  getKindOptions,
   validationSchema,
+  getPriorityOptions,
 } from "./utils";
 import {
   Label,
@@ -118,7 +118,7 @@ const IssueForm: FC<Props> = ({
         <Select<Issue["kind"]>
           id="kind"
           value={watch("kind")}
-          options={kindOptions}
+          options={getKindOptions()}
           error={has(errors, ["kind", "message"])}
           onChange={({ value }) => setValue("kind", value)}
         />
@@ -128,7 +128,7 @@ const IssueForm: FC<Props> = ({
         <Select<Issue["priority"]>
           id="priority"
           value={watch("priority")}
-          options={priorityOptions}
+          options={getPriorityOptions()}
           error={has(errors, ["priority", "message"])}
           onChange={({ value }) => setValue("priority", value)}
         />

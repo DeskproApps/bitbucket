@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import get from "lodash/get";
-import startCase from "lodash/startCase";
 import { Title, Property, TwoProperties } from "@deskpro/app-sdk";
 import { format } from "../../../utils/date";
 import {
@@ -8,8 +7,10 @@ import {
   Status,
   Content,
   Container,
+  IssueIcon,
   TextWithLink,
-  BitbucketLogo, DeskproTickets,
+  BitbucketLogo,
+  DeskproTickets,
 } from "../../common";
 import type { FC } from "react";
 import type { Issue } from "../../../services/bitbucket/types";
@@ -74,9 +75,9 @@ const Details: FC<Props> = ({ issue }) => {
 
       <TwoProperties
         leftLabel="Type"
-        leftText={startCase(get(issue, ["kind"], "-"))}
+        leftText={<IssueIcon type={get(issue, ["kind"])}/>}
         rightLabel="Priority"
-        rightText={startCase(get(issue, ["priority"], "-"))}
+        rightText={<IssueIcon type={get(issue, ["priority"])}/>}
       />
 
       <TwoProperties
