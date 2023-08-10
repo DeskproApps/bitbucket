@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 import get from "lodash/get";
+import size from "lodash/size";
+import { Stack } from "@deskpro/deskpro-ui";
 import { Title, Property, TwoProperties } from "@deskpro/app-sdk";
 import { format } from "../../../utils/date";
 import {
@@ -8,18 +10,21 @@ import {
   Content,
   Container,
   IssueIcon,
+  IssueAttach,
   TextWithLink,
   BitbucketLogo,
   DeskproTickets,
 } from "../../common";
 import type { FC } from "react";
-import type { Issue } from "../../../services/bitbucket/types";
+import type { Link, Issue, Attachment } from "../../../services/bitbucket/types";
 
 type Props = {
   issue: Issue,
+  attachments: Attachment[],
+  onDownloadAttachment: (url: Link["href"], filename: Attachment["name"]) => Promise<void>,
 };
 
-const Details: FC<Props> = ({ issue }) => {
+const Details: FC<Props> = ({ issue, attachments, onDownloadAttachment }) => {
   const issueId = useMemo(() => get(issue, ["id"]), [issue]);
   const reporter = useMemo(() => get(issue, ["reporter"]), [issue]);
   const assignee = useMemo(() => get(issue, ["assignee"]), [issue]);
@@ -104,6 +109,21 @@ const Details: FC<Props> = ({ issue }) => {
             name={get(assignee, ["display_name"])}
             avatarUrl={get(assignee, ["links", "avatar", "href"])}
           />
+        )}
+      />
+
+      <Property
+        label="Attachments"
+        text={!size(attachments) ? "-" : (
+           <Stack gap={6} wrap="wrap">
+             {attachments.map((attach) => (
+               <IssueAttach
+                 key={attach.name}
+                 attach={attach}
+                 onDownloadAttachment={onDownloadAttachment}
+               />
+             ))}
+           </Stack>
         )}
       />
     </Container>

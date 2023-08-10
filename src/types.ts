@@ -16,11 +16,14 @@ export type DateTime = string;
 /** Request types */
 export type ApiRequestMethod = "GET" | "POST" | "PUT" | "DELETE";
 
+export type HttpResponseType = "json" | "blob";
+
 export type RequestParams = {
   url?: string,
   rawUrl?: string,
   method?: ApiRequestMethod,
   data?: object,
+  type?: HttpResponseType,
   headers?: Dict<string>,
   queryParams?: string|Dict<string>|ParamKeyValuePair[],
 };

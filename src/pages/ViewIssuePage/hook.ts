@@ -1,17 +1,21 @@
 import { useMemo } from "react";
 import get from "lodash/get";
-import filter from "lodash/filter";
 import { useQueryWithClient } from "@deskpro/app-sdk";
-import { getIssueService, getIssueCommentsService } from "../../services/bitbucket";
-import { generateEntityId } from "../../utils";
+import {
+  getIssueService,
+  getIssueCommentsService,
+  getIssueAttachmentsService,
+} from "../../services/bitbucket";
+import { generateEntityId, filterIssueComments } from "../../utils";
 import { QueryKey } from "../../query";
 import type { Maybe } from "../../types";
-import type { Issue, Repository, Comment } from "../../services/bitbucket/types";
+import type { Issue, Repository, Comment, Attachment } from "../../services/bitbucket/types";
 
 type UseIssue = (issueId: Maybe<Issue["id"]>, repo: Maybe<Repository["full_name"]>) => {
   isLoading: boolean,
   issue: Issue,
   comments: Comment[],
+  attachments: Attachment[],
 };
 
 const useIssue: UseIssue = (issueId, repo) => {
@@ -33,16 +37,20 @@ const useIssue: UseIssue = (issueId, repo) => {
   );
 
   const comments = useMemo(() => {
-    const values = get(fetchedComments, ["data", "values"], []) || [] as Comment[];
-    return filter(values, (comment) => {
-      return Boolean(comment.content.raw);
-    })
+    return filterIssueComments(get(fetchedComments, ["data", "values"]));
   }, [fetchedComments]);
 
+  const attachments = useQueryWithClient(
+    [QueryKey.ISSUE_ATTACHMENTS, generateEntityId(pseudoIssue as Issue) as string],
+    (client) => getIssueAttachmentsService(client, repo as Repository["full_name"], issueId as Issue["id"]),
+    { enabled: Boolean(issueId) && Boolean(repo) },
+  );
+
   return {
-    isLoading: [issue, fetchedComments].some(({ isLoading }) => isLoading),
+    isLoading: [issue, fetchedComments, attachments].some(({ isLoading }) => isLoading),
     issue: get(issue, ["data"]) as Issue,
     comments,
+    attachments: (get(attachments, ["data", "values"], []) || []) as Attachment[],
   }
 };
 

@@ -139,3 +139,13 @@ export type Comment = {
     html: Link,
   }
 }
+
+export type Attachment = {
+  type: "issue_attachment",
+  name: string,
+  links: {
+    self: {
+      href: Link["href"]|Array<Link["href"]>,
+    },
+  },
+};
