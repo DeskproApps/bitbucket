@@ -8,27 +8,26 @@ import type { Pagination } from "../services/bitbucket/types";
 type PromiseCallback<T> = (client: IDeskproClient, params: any) => Promise<Pagination<T>>;
 
 const retryUntilHavePagination = <T>(fn: PromiseCallback<T>): PromiseCallback<T> => {
+  return (client, params) => {
     let result: T[] = [];
-    let nextPage: number|undefined = 1;
+    let nextPage: number | undefined = 1;
 
-    return (client, params) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const run: () => Promise<any> = () => {
-            return fn(client, { ...params, page: nextPage }).then((data) => {
-                const values = get(data, ["values"]);
-                result = !values ? result : concat(result, values);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const run: () => Promise<any> = () => {
+      return fn(client, {...params, page: nextPage}).then((data) => {
+        const values = get(data, ["values"], []) || [];
+        result = !values ? result : concat(result, values);
+        nextPage = getNextPage(data);
 
-                nextPage = getNextPage(data);
-
-                if (!nextPage) {
-                    return Promise.resolve({ values: result });
-                }
-                return run();
-            });
-        };
-
+        if (!nextPage) {
+          return {values: result};
+        }
         return run();
-    }
+      });
+    };
+
+    return run();
+  }
 };
 
 export { retryUntilHavePagination };

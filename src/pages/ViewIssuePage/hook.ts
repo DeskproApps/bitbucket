@@ -6,6 +6,7 @@ import {
   getIssueCommentsService,
   getIssueAttachmentsService,
 } from "../../services/bitbucket";
+import { sortDate } from "../../utils/date";
 import {
   generateEntityId,
   filterIssueComments,
@@ -27,6 +28,7 @@ const useIssue: UseIssue = (issueId, repo) => {
     id: issueId as Issue["id"],
     repository: { full_name: repo as Repository["full_name"] }
   };
+  const retryIssueCommentsService = retryUntilHavePagination<Comment>(getIssueCommentsService);
 
   const issue = useQueryWithClient(
     [QueryKey.ISSUE, generateEntityId(pseudoIssue as Issue) as string],
@@ -34,10 +36,8 @@ const useIssue: UseIssue = (issueId, repo) => {
     { enabled: Boolean(issueId) && Boolean(repo) },
   );
 
-  const retryIssueCommentsService = retryUntilHavePagination<Comment>(getIssueCommentsService);
-
   const fetchedComments = useQueryWithClient(
-      [`retry${QueryKey.ISSUE_COMMENTS}`, generateEntityId(pseudoIssue as Issue) as string],
+      [QueryKey.ISSUE_COMMENTS, generateEntityId(pseudoIssue as Issue) as string],
       (client) => retryIssueCommentsService(client, {
         repo: repo as Repository["full_name"],
         issueId: issueId as Issue["id"],
@@ -50,7 +50,8 @@ const useIssue: UseIssue = (issueId, repo) => {
   );
 
   const comments = useMemo(() => {
-    return filterIssueComments(get(fetchedComments, ["data", "values"]));
+    return filterIssueComments(get(fetchedComments, ["data", "values"]))
+      .sort((a, b) => sortDate(a.created_on, b.created_on));
   }, [fetchedComments]);
 
   const attachments = useQueryWithClient(
