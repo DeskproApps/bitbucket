@@ -1,0 +1,38 @@
+{
+  "values": [
+    {
+      "type": "issue_attachment",
+      "links": {
+        "self": {
+          "href": [
+            "Screenshot_2023-08-06.png"
+          ]
+        }
+      },
+      "name": "Screenshot_2023-08-06.png"
+    },
+    {
+      "type": "issue_attachment",
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/7/attachments/b_Group.png"
+        }
+      },
+      "name": "b_Group.png"
+    },
+    {
+      "type": "issue_attachment",
+      "links": {
+        "self": {
+          "href": [
+            "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/7/attachments/sam-html.pdf"
+          ]
+        }
+      },
+      "name": "sam-html.pdf"
+    }
+  ],
+  "pagelen": 100,
+  "size": 3,
+  "page": 1
+}

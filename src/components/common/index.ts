@@ -18,3 +18,5 @@ export { Content } from "./Content";
 export { Navigation } from "./Navigation";
 export { TextArea } from "./TextArea";
 export { Attach } from "./Attach";
+export { IssueIcon } from "./IssueIcon";
+export { IssueAttach } from "./IssueAttach";

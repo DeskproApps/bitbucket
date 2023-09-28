@@ -20,6 +20,7 @@ enum QueryKey {
   ISSUE = "issue",
   ISSUE_COMMENTS = "issueComments",
   MEMBERS_BY_WORKSPACE = "membersByWorkspace",
+  ISSUE_ATTACHMENTS = "issueAttachments",
 }
 
 export { queryClient, QueryKey };

@@ -1,4 +1,5 @@
 import isString from "lodash/isString";
+import split from "lodash/split";
 import type { Issue, Repository } from "../services/bitbucket/types";
 
 const parseEntityId = (data?: string): void|{
@@ -9,11 +10,12 @@ const parseEntityId = (data?: string): void|{
     return;
   }
 
-  try {
-    return JSON.parse(data);
-  } catch (e) {
-    return;
-  }
+  const [issueId, workspace, repo] = split(data, "/");
+
+  return {
+    issueId: Number(issueId),
+    repo: `${workspace}/${repo}`,
+  };
 };
 
 export { parseEntityId };

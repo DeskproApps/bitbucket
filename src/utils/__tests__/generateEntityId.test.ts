@@ -1,11 +1,11 @@
 import cloneDeep from "lodash/cloneDeep";
 import { generateEntityId } from "../generateEntityId";
-import { mockIssues } from "../../../testing";
+import { mockIssue } from "../../../testing";
 
 describe("generateEntityId", () => {
   test("should return issue data for linking to the ticket", () => {
-    expect(generateEntityId(mockIssues.values[0] as never))
-      .toEqual("{\"issueId\":1,\"repo\":\"zpawn/apps-lab\"}");
+    expect(generateEntityId(mockIssue as never))
+      .toEqual("7/zpawn/apps-lab");
   });
 
   test("should return undefined if isn't issue", () => {
@@ -13,7 +13,7 @@ describe("generateEntityId", () => {
   });
 
   test("should return undefined if isn't repository full_name", () => {
-    const issue = cloneDeep(mockIssues.values[0]);
+    const issue = cloneDeep(mockIssue);
     issue.repository = null as never;
 
     expect(generateEntityId(issue as never)).toBeUndefined();

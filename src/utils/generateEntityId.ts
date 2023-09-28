@@ -9,11 +9,7 @@ const generateEntityId = (issue?: Issue): string|void => {
     return;
   }
 
-  try {
-    return JSON.stringify({ issueId, repo });
-  } catch (e) {
-    return;
-  }
+  return `${issueId}/${repo}`;
 };
 
 export { generateEntityId };

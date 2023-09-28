@@ -5,19 +5,25 @@ import { useNavigate, createSearchParams, useSearchParams } from "react-router-d
 import {
   LoadingSpinner,
   useDeskproElements,
+  useDeskproAppClient,
 } from "@deskpro/app-sdk";
-import { useSetTitle } from "../../hooks";
+import { useSetTitle, useAsyncError } from "../../hooks";
 import { useIssue } from "./hook";
+import { triggerDownloadFileToUser } from "../../utils";
+import { downloadFileService } from "../../services/bitbucket";
 import { ViewIssue } from "../../components";
 import type { FC } from "react";
+import type { Link } from "../../services/bitbucket/types";
 
 const ViewIssuePage: FC = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { client } = useDeskproAppClient();
+  const { asyncErrorHandler } = useAsyncError();
   const issueId = searchParams.get("issueId");
   const repo = searchParams.get("repo");
 
-  const { issue, comments, isLoading } = useIssue(toNumber(issueId), repo);
+  const { issue, comments, attachments, isLoading } = useIssue(toNumber(issueId), repo);
 
   const onNavigateToAddComment = useCallback(() => {
     if (!issueId || !repo) {
@@ -29,6 +35,16 @@ const ViewIssuePage: FC = () => {
       search: `?${createSearchParams({ issueId, repo })}`,
     });
   }, [navigate, issueId, repo]);
+
+  const onDownloadAttachment = useCallback((url: Link["href"], filename: string) => {
+    if (!client) {
+      return Promise.resolve();
+    }
+
+    return downloadFileService(client, url)
+        .then((file) => triggerDownloadFileToUser(file, filename))
+        .catch(asyncErrorHandler);
+  }, [client, asyncErrorHandler]);
 
   useSetTitle(`#${issueId}`);
 
@@ -68,6 +84,8 @@ const ViewIssuePage: FC = () => {
     <ViewIssue
       issue={issue}
       comments={comments}
+      attachments={attachments}
+      onDownloadAttachment={onDownloadAttachment}
       onNavigateToAddComment={onNavigateToAddComment}
     />
   );

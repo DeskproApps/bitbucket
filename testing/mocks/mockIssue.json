@@ -1,0 +1,119 @@
+{
+  "type": "issue",
+  "id": 7,
+  "repository": {
+    "type": "repository",
+    "full_name": "zpawn/apps-lab",
+    "links": {
+      "self": {
+        "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab"
+      },
+      "html": {
+        "href": "https://bitbucket.org/zpawn/apps-lab"
+      },
+      "avatar": {
+        "href": "https://bytebucket.org/ravatar/%7Brepository001%7D?ts=default"
+      }
+    },
+    "name": "apps-lab",
+    "workspace": {
+      "type": "workspace",
+      "uuid": "{workspace001}",
+      "name": "ilia makarov workspace",
+      "slug": "zpawn",
+      "links": {
+        "avatar": {
+          "href": "https://bitbucket.org/workspaces/zpawn/avatar/?ts=1691137584"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/"
+        },
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/workspaces/zpawn"
+        }
+      }
+    },
+    "project": {
+      "type": "project",
+      "key": "DPP",
+      "uuid": "{project001}",
+      "name": "Deskpro Public Rroject",
+      "links": {
+        "self": {
+          "href": "https://api.bitbucket.org/2.0/workspaces/zpawn/projects/DPP"
+        },
+        "html": {
+          "href": "https://bitbucket.org/zpawn/workspace/projects/DPP"
+        },
+        "avatar": {
+          "href": "https://bitbucket.org/account/user/zpawn/projects/DPP/avatar/32?ts=1690382394"
+        }
+      }
+    },
+    "uuid": "{repository001}"
+  },
+  "links": {
+    "self": {
+      "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/7"
+    },
+    "html": {
+      "href": "https://bitbucket.org/zpawn/apps-lab/issues/7/new-world-order"
+    },
+    "comments": {
+      "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/7/comments"
+    },
+    "attachments": {
+      "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/7/attachments"
+    },
+    "watch": {
+      "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/7/watch"
+    },
+    "vote": {
+      "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/issues/7/vote"
+    }
+  },
+  "title": "New world order",
+  "content": {
+    "type": "rendered",
+    "raw": "Diplomacy will begin when the last muscovite dies",
+    "markup": "markdown",
+    "html": "<p>Diplomacy will begin when the last muscovite dies</p>"
+  },
+  "reporter": {
+    "display_name": "Ilya Makarov",
+    "links": {
+      "self": {
+        "href": "https://api.bitbucket.org/2.0/users/%7Bworkspace001%7D"
+      },
+      "avatar": {
+        "href": "https://secure.gravatar.com/avatar/290bf0534ce3c93040db8e862f744d81?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FIM-3.png"
+      },
+      "html": {
+        "href": "https://bitbucket.org/%7Bworkspace001%7D/"
+      }
+    },
+    "type": "user",
+    "uuid": "{workspace001}",
+    "account_id": "account001",
+    "nickname": "zpawn"
+  },
+  "assignee": null,
+  "created_on": "2023-08-08T09:00:45.829582+00:00",
+  "edited_on": null,
+  "updated_on": "2023-08-08T13:01:44.292661+00:00",
+  "state": "new",
+  "kind": "enhancement",
+  "milestone": {
+    "links": {
+      "self": {
+        "href": "https://api.bitbucket.org/2.0/repositories/zpawn/apps-lab/milestones/407741"
+      }
+    },
+    "name": "DP Chore"
+  },
+  "component": null,
+  "priority": "critical",
+  "version": null,
+  "votes": 0,
+  "watches": 1
+}

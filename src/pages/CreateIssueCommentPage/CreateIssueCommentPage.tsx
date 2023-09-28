@@ -3,6 +3,7 @@ import get from "lodash/get";
 import { useNavigate, useSearchParams, createSearchParams } from "react-router-dom";
 import { useDeskproElements, useDeskproAppClient } from "@deskpro/app-sdk";
 import { useSetTitle, useAsyncError } from "../../hooks";
+import { queryClient } from "../../query";
 import { createIssueCommentService } from "../../services/bitbucket";
 import { CreateIssueComment } from "../../components";
 import { getValues } from "../../components/IssueCommentForm";
@@ -37,6 +38,7 @@ const CreateIssueCommentPage: FC = () => {
     }
 
     return createIssueCommentService(client, repo, Number(issueId), getValues(values))
+      .then(() => queryClient.invalidateQueries())
       .then(() => navigate({
         pathname: `/issue/view`,
         search: `?${createSearchParams({ issueId, repo })}`,

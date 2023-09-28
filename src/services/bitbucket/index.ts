@@ -11,3 +11,5 @@ export { createIssueService } from "./createIssueService";
 export { uploadAttachToIssueService } from "./uploadAttachToIssueService";
 export { updateIssueService } from "./updateIssueService";
 export { createIssueCommentService } from "./createIssueCommentService";
+export { getIssueAttachmentsService } from "./getIssueAttachmentsService";
+export { downloadFileService } from "./downloadFileService";

@@ -3,7 +3,7 @@ import get from "lodash/get";
 import size from "lodash/size";
 import { z } from "zod";
 import { getOption } from "../../utils";
-import { Member } from "../common";
+import { Member, IssueIcon } from "../common";
 import type {
   User,
   Issue,
@@ -76,20 +76,19 @@ const getIssueAttachments = (values: FormValidationSchema): void|FormData => {
   return formData;
 };
 
-const kindOptions = [
-  getOption<"bug">("bug"),
-  getOption<"enhancement">("enhancement"),
-  getOption<"proposal">("proposal"),
-  getOption<"task">("task"),
-];
+const getKindOptions = () => {
+  const kinds: Array<Issue["kind"]> = ["bug", "enhancement", "proposal", "task"];
+  return kinds.map((kind) => {
+    return getOption(kind, createElement(IssueIcon, { type: kind }), kind);
+  });
+};
 
-const priorityOptions = [
-  getOption<"trivial">("trivial"),
-  getOption<"minor">("minor"),
-  getOption<"major">("major"),
-  getOption<"critical">("critical"),
-  getOption<"blocker">("blocker"),
-];
+const getPriorityOptions = () => {
+  const priorities: Array<Issue["priority"]> = ["trivial","minor","major","critical","blocker"];
+  return priorities.map((priority) => {
+    return getOption(priority, createElement(IssueIcon, { type: priority }), priority);
+  });
+};
 
 const getWorkspaceOptions = (workspaces?: Workspace[]) => {
   if (!Array.isArray(workspaces) || !size(workspaces)) {
@@ -126,13 +125,13 @@ const getUserOptions = (members?: Array<{ user: User }>) => {
 };
 
 export {
-  kindOptions,
   getIssueRepo,
   getInitValues,
   getIssueValues,
   getUserOptions,
-  priorityOptions,
+  getKindOptions,
   validationSchema,
+  getPriorityOptions,
   getIssueAttachments,
   getWorkspaceOptions,
   getRepositoryOptions,

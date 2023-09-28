@@ -5,3 +5,7 @@ export { getFilteredIssues } from "./getFilteredIssues";
 export { parseEntityId } from "./parseEntityId";
 export { generateEntityId } from "./generateEntityId";
 export { addBlankTargetToLinks } from "./addBlankTargetToLinks";
+export { triggerDownloadFileToUser } from "./triggerDownloadFileToUser";
+export { filterIssueComments } from "./filterIssueComments";
+export { retryUntilHavePagination } from "./retryUntilHavePagination";
+export { getNextPage } from "./getNextPage";
