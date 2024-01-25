@@ -5,9 +5,14 @@ import {
   useDeskproLatestAppContext,
   useInitialisedDeskproAppClient,
 } from "@deskpro/app-sdk";
-import { getEntityListService } from "../../services/deskpro";
-import { getCurrentUserService } from "../../services/bitbucket";
+import {
+  getEntityListService,
+  // setAccessTokenService,
+  // setRefreshTokenService,
+} from "../../services/deskpro";
+import { getCurrentUserService, refreshTokenService } from "../../services/bitbucket";
 import type { TicketContext } from "../../types";
+// import type { AccessToken } from "../../services/bitbucket/types";
 
 type UseCheckAuth = () => void;
 
@@ -22,6 +27,15 @@ const useCheckAuth: UseCheckAuth = () => {
     }
 
     getCurrentUserService(client)
+      .catch(() => refreshTokenService(client))
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      // .then(({ access_token, refresh_token }) => {
+      //   return Promise.all([
+      //     setAccessTokenService(client, access_token),
+      //     setRefreshTokenService(client, refresh_token),
+      //   ]).then(() => getCurrentUserService(client))
+      // })
       .then(() => getEntityListService(client, ticketId))
       .then((entityIds) => navigate(size(entityIds) ? "/home" : "/link"))
       .catch(() => navigate("/login"));

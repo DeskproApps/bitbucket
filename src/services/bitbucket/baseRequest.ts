@@ -1,10 +1,10 @@
-import isEmpty from "lodash/isEmpty";
+import { isEmpty, isString } from "lodash";
 import { match } from "ts-pattern";
 import { proxyFetch } from "@deskpro/app-sdk";
 import { BITBUCKET_URL, placeholders } from "../../constants";
 import { getQueryParams } from "../../utils";
 import { BitbucketError } from "./BitbucketError";
-import type { Request } from "../../types";
+import type { Request, FetchOptions } from "../../types";
 
 const baseRequest: Request = async (client, {
   url,
@@ -21,7 +21,7 @@ const baseRequest: Request = async (client, {
   const params = getQueryParams(queryParams);
 
   const requestUrl = `${baseUrl}?${params}`;
-  const options: RequestInit = {
+  const options: FetchOptions = {
     method,
     headers: {
       "Authorization": `Bearer ${placeholders.ACCESS_TOKEN}`,
@@ -29,10 +29,8 @@ const baseRequest: Request = async (client, {
     },
   };
 
-  if (data instanceof FormData) {
-    options.body = data;
-  } else if (!isEmpty(data)) {
-    options.body = JSON.stringify(data);
+  if (!isEmpty(data)) {
+    options.body = isString(data) ? data as string : JSON.stringify(data);
     options.headers = {
       "Content-Type": "application/json",
       ...options.headers,
@@ -50,6 +48,8 @@ const baseRequest: Request = async (client, {
 
   try {
     return await match(type)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       .with("blob", () => res.blob() as never)
       .otherwise(() => res.json());
   } catch (e) {

@@ -1,5 +1,7 @@
 import type { Maybe, DateTime } from "../../types";
 
+export type Response<T> = Promise<T>;
+
 export type BitbucketAuthError = {
   error: string, // "invalid_grant"
   error_description: string,
