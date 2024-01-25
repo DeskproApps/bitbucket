@@ -13,3 +13,4 @@ export { updateIssueService } from "./updateIssueService";
 export { createIssueCommentService } from "./createIssueCommentService";
 export { getIssueAttachmentsService } from "./getIssueAttachmentsService";
 export { downloadFileService } from "./downloadFileService";
+export { refreshTokenService } from "./refreshTokenService";
