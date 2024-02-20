@@ -37,7 +37,7 @@
     "styled-components": "^5.3.11",
     "ts-pattern": "^4.3.0",
     "uuid": "^9.0.0",
-    "zod": "^3.21.4"
+    "zod": "^3.22.3"
   },
   "devDependencies": {
     "@jest/globals": "^29.6.1",
@@ -76,6 +76,6 @@
     "slugify": "^1.6.5",
     "ts-jest": "^29.1.1",
     "typescript": "^4.9.5",
-    "vite": "^2.7.2"
+    "vite": "^2.9.17"
   }
 }
