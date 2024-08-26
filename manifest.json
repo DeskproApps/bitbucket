@@ -54,7 +54,7 @@
       "type": "boolean",
       "isRequired": false,
       "isBackendOnly": false,
-      "order": 40
+      "order": 50
     },
     "default_comment_on_ticket_note": {
       "title": "Ticket note as comment",
@@ -62,7 +62,7 @@
       "type": "boolean",
       "isRequired": false,
       "isBackendOnly": false,
-      "order": 50
+      "order": 60
     }
   },
   "proxy": {
