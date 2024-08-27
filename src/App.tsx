@@ -62,22 +62,22 @@ const App: FC = () => {
 
   if (!client || isLoading) {
     return (
-      <LoadingSpinner/>
+      <LoadingSpinner />
     );
   }
 
   return (
     <AppContainer isAdmin={isAdmin}>
       <Routes>
-        <Route path="/admin/callback" element={<AdminCallbackPage/>}/>)
-        <Route path="/login" element={<LoginPage/>}/>)
-        <Route path="/link" element={<LinkPage/>}/>)
-        <Route path="/home" element={<HomePage/>}/>)
-        <Route path="/issue/view" element={<ViewIssuePage/>}/>)
-        <Route path="/issue/create" element={<CreateIssuePage/>}/>)
-        <Route path="/issue/edit" element={<EditIssuePage/>}/>)
-        <Route path="/issue/comment/create" element={<CreateIssueCommentPage/>}/>)
-        <Route index element={<LoadingAppPage/>}/>
+        <Route path="/admin/callback" element={<AdminCallbackPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/link" element={<LinkPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/issue/view" element={<ViewIssuePage />} />
+        <Route path="/issue/create" element={<CreateIssuePage />} />
+        <Route path="/issue/edit" element={<EditIssuePage />} />
+        <Route path="/issue/comment/create" element={<CreateIssueCommentPage />} />
+        <Route index element={<LoadingAppPage />} />
       </Routes>
     </AppContainer>
   );
