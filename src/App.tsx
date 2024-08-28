@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import get from "lodash/get";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useDebouncedCallback } from "use-debounce";
@@ -32,7 +31,7 @@ const App: FC = () => {
   const { client } = useDeskproAppClient();
   const { logout, isLoading: isLoadingLogout } = useLogout();
   const { unlink, isLoading: isLoadingUnlink } = useUnlinkIssue();
-  const isAdmin = useMemo(() => pathname.includes("/admin/"), [pathname]);
+  const isAdmin = pathname.includes("/admin/");
   const isLoading = [isLoadingLogout, isLoadingUnlink].some((isLoading) => isLoading);
 
   useDeskproElements(({ registerElement }) => {
@@ -62,22 +61,22 @@ const App: FC = () => {
 
   if (!client || isLoading) {
     return (
-      <LoadingSpinner/>
+      <LoadingSpinner />
     );
   }
 
   return (
     <AppContainer isAdmin={isAdmin}>
       <Routes>
-        <Route path="/admin/callback" element={<AdminCallbackPage/>}/>)
-        <Route path="/login" element={<LoginPage/>}/>)
-        <Route path="/link" element={<LinkPage/>}/>)
-        <Route path="/home" element={<HomePage/>}/>)
-        <Route path="/issue/view" element={<ViewIssuePage/>}/>)
-        <Route path="/issue/create" element={<CreateIssuePage/>}/>)
-        <Route path="/issue/edit" element={<EditIssuePage/>}/>)
-        <Route path="/issue/comment/create" element={<CreateIssueCommentPage/>}/>)
-        <Route index element={<LoadingAppPage/>}/>
+        <Route path="/admin/callback" element={<AdminCallbackPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/link" element={<LinkPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/issue/view" element={<ViewIssuePage />} />
+        <Route path="/issue/create" element={<CreateIssuePage />} />
+        <Route path="/issue/edit" element={<EditIssuePage />} />
+        <Route path="/issue/comment/create" element={<CreateIssueCommentPage />} />
+        <Route index element={<LoadingAppPage />} />
       </Routes>
     </AppContainer>
   );
