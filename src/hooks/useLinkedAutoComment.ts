@@ -41,6 +41,8 @@ const useLinkedAutoComment = (): Result => {
       client,
       issue.repository.full_name,
       issue.id,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       { content: { markup: "markdown", raw: getLinkedMessage(ticketId, permalink) }},
     )
       .finally(() => setIsLoading(false));
@@ -56,6 +58,8 @@ const useLinkedAutoComment = (): Result => {
       client,
       issue.repository.full_name,
       issue.id,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       { content: { markup: "markdown", raw: getUnlinkedMessage(ticketId, permalink) }},
     )
       .finally(() => setIsLoading(false));

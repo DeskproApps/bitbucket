@@ -21,6 +21,7 @@ import { LinkIssues } from "../../components";
 import type { FC } from "react";
 import type { TicketContext } from "../../types";
 import type { Repository, Issue } from "../../services/bitbucket/types";
+import { baseRequest } from "../../services/bitbucket/baseRequest";
 
 const LinkPage: FC = () => {
   const navigate = useNavigate();
@@ -98,20 +99,40 @@ const LinkPage: FC = () => {
   }, [repositories]);
 
   return (
-    <LinkIssues
-      isLoading={isLoading}
-      onChangeSearch={onChangeSearch}
-      repositories={repositories}
-      selectedRepository={selectedRepository}
-      onChangeRepository={setSelectedRepository}
-      onCancel={onCancel}
-      onLinkIssues={onLinkIssues}
-      isSubmitting={isSubmitting}
-      selectedIssues={selectedIssues}
-      issues={getFilteredIssues(issues, { query: searchQuery })}
-      onChangeSelectedIssue={onChangeSelectedIssue}
-      onNavigateToCreate={onNavigateToCreate}
-    />
+    <>
+      <button type="button" onClick={() => {
+        if (!client) {
+          return;
+        }
+        const data = new FormData();
+        data.append("grant_type", "refresh_token");
+        data.append("refresh_token", "[user[oauth2/refresh_token]]");
+        // data.append("refresh_token", "real-value");
+
+        return baseRequest(client, {
+          rawUrl: `https://bitbucket.org/site/oauth2/access_token`,
+          method: "POST",
+          headers: {
+            Authorization: `Basic __key+':'+secret.base64__`,
+          },
+          data,
+        })
+      }}>refresh token</button>
+      <LinkIssues
+        isLoading={isLoading}
+        onChangeSearch={onChangeSearch}
+        repositories={repositories}
+        selectedRepository={selectedRepository}
+        onChangeRepository={setSelectedRepository}
+        onCancel={onCancel}
+        onLinkIssues={onLinkIssues}
+        isSubmitting={isSubmitting}
+        selectedIssues={selectedIssues}
+        issues={getFilteredIssues(issues, { query: searchQuery })}
+        onChangeSelectedIssue={onChangeSelectedIssue}
+        onNavigateToCreate={onNavigateToCreate}
+      />
+    </>
   );
 };
 

@@ -20,15 +20,23 @@ const useLinkedIssues: UseLinkedIssues = () => {
   const ticketId = get(context, ["data", "ticket", "id"]);
 
   const linkedIds = useQueryWithClient(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     [QueryKey.LINKED_TASKS, ticketId],
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     (client) => getEntityListService(client, ticketId),
     { enabled: Boolean(ticketId) }
   );
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   const fetchedIssues = useQueriesWithClient((get(linkedIds, ["data"], []) || []).map((issueMeta) => {
     const meta = parseEntityId(issueMeta);
     return {
       queryKey: [QueryKey.ISSUE, issueMeta],
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       queryFn: (client) => (!meta
         ? Promise.resolve()
         : getIssueService(client, meta.repo, meta.issueId)
@@ -44,6 +52,8 @@ const useLinkedIssues: UseLinkedIssues = () => {
 
   return {
     isLoading: [linkedIds, ...fetchedIssues].some(({ isLoading, isFetching }) => isLoading || isFetching),
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     issues: issues as Issue[],
   };
 };

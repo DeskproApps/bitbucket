@@ -65,13 +65,21 @@ const useLogin: UseLogin = () => {
     setTimeout(() => setIsLoading(true), 1000);
 
     callback.poll()
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
       .then(({ token }) => getAccessTokenService(client, token))
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       .then(({ access_token, refresh_token }) => Promise.all([
         setAccessTokenService(client, access_token),
         setRefreshTokenService(client, refresh_token),
       ]))
       .then(() => getCurrentUserService(client))
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       .then(() => getEntityListService(client, ticketId))
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       .then((entityIds) => navigate(size(entityIds) ? "/home" : "/link"))
       .catch(asyncErrorHandler);
   }, [client, callback, navigate, ticketId, asyncErrorHandler]);

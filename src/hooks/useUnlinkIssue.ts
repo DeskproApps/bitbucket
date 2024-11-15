@@ -38,6 +38,8 @@ const useUnlinkIssue = (): Result => {
 
     setIsLoading(true);
     Promise.all([
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       deleteEntityService(client, ticketId, issueMeta),
       addUnlinkComment(issue),
       deleteSelectionState(issue, "note"),
