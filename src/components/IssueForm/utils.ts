@@ -106,7 +106,7 @@ const getRepositoryOptions = (repositories?: Repository[]) => {
   }
 
   return repositories.map((r: Repository) => {
-    return getOption(r.full_name, r.name);
+    return getOption(r.full_name, r.full_name);
   })
 };
 

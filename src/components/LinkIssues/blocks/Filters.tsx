@@ -18,7 +18,7 @@ const Filters: FC<Props> = ({
 }) => {
   const workspaceOptions = useMemo(() => {
     return (!Array.isArray(repositories) ? [] : repositories)
-      .map(({ full_name, name }) => getOption(full_name, name));
+      .map(({ full_name }) => getOption(full_name, full_name));
   }, [repositories]);
 
   return (
