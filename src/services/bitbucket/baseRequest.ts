@@ -1,6 +1,6 @@
 import isEmpty from "lodash/isEmpty";
 import { match } from "ts-pattern";
-import { proxyFetch } from "@deskpro/app-sdk";
+import { V2ProxyRequestInit, proxyFetch } from "@deskpro/app-sdk";
 import { BITBUCKET_URL, placeholders } from "../../constants";
 import { getQueryParams } from "../../utils";
 import { BitbucketError } from "./BitbucketError";
@@ -21,7 +21,7 @@ const baseRequest: Request = async (client, {
   const params = getQueryParams(queryParams);
 
   const requestUrl = `${baseUrl}?${params}`;
-  const options: RequestInit = {
+  const options: V2ProxyRequestInit = {
     method,
     headers: {
       "Authorization": `Bearer ${placeholders.ACCESS_TOKEN}`,
