@@ -182,10 +182,14 @@ const ReplyBoxProvider: FC<PropsWithChildren> = ({ children }) => {
       })
   }, [client, ticketId, issuesMap]);
 
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   useInitialisedDeskproAppClient((client) => {
     if (isCommentOnNote) {
       registerReplyBoxNotesAdditionsTargetAction(
         client,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         ticketId,
         issues.map(generateEntityId).filter(Boolean) as string[],
         issuesMap,
@@ -196,6 +200,8 @@ const ReplyBoxProvider: FC<PropsWithChildren> = ({ children }) => {
     if (isCommentOnEmail) {
       registerReplyBoxEmailsAdditionsTargetAction(
         client,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
         ticketId,
         issues.map(generateEntityId).filter(Boolean) as string[],
         issuesMap,
