@@ -7,7 +7,7 @@ import { getIssueService } from "../services/bitbucket";
 import { useQueriesWithClient } from "./useQueriesWithClient";
 import { parseEntityId } from "../utils";
 import { QueryKey } from "../query";
-import type { TicketContext } from "../types";
+import type { TicketData, Settings, DPTicket } from "../types";
 import type { Issue } from "../services/bitbucket/types";
 
 type UseLinkedIssues = () => {
@@ -16,12 +16,12 @@ type UseLinkedIssues = () => {
 };
 
 const useLinkedIssues: UseLinkedIssues = () => {
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  const { context } = useDeskproLatestAppContext<TicketData, Settings>();
   const ticketId = get(context, ["data", "ticket", "id"]);
 
   const linkedIds = useQueryWithClient(
-    [QueryKey.LINKED_TASKS, ticketId],
-    (client) => getEntityListService(client, ticketId),
+    [QueryKey.LINKED_TASKS, ticketId as DPTicket["id"]],
+    (client) => getEntityListService(client, ticketId as DPTicket["id"]),
     { enabled: Boolean(ticketId) }
   );
 

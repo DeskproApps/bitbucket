@@ -20,7 +20,7 @@ import { APP_PREFIX } from "../constants";
 import type { FC, PropsWithChildren } from "react";
 import type { IDeskproClient, GetStateResponse, TargetAction } from "@deskpro/app-sdk";
 import type { Issue, Repository } from "../services/bitbucket/types";
-import type { TicketContext, TicketData } from "../types";
+import type { TicketData, Settings } from "../types";
 
 export type ReplyBoxType = "note" | "email";
 
@@ -114,7 +114,7 @@ const ReplyBoxContext = createContext<ReturnUseReplyBox>({
 const useReplyBox = () => useContext<ReturnUseReplyBox>(ReplyBoxContext);
 
 const ReplyBoxProvider: FC<PropsWithChildren> = ({ children }) => {
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  const { context } = useDeskproLatestAppContext<TicketData, Settings>();
   const { client } = useDeskproAppClient();
   const { issues } = useLinkedIssues();
   const issuesMap = useMemo(() => (Array.isArray(issues) ? issues : []).reduce<Record<string, Issue>>((acc, issue) => {
@@ -183,6 +183,8 @@ const ReplyBoxProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [client, ticketId, issuesMap]);
 
   useInitialisedDeskproAppClient((client) => {
+    if (!ticketId) return;
+
     if (isCommentOnNote) {
       registerReplyBoxNotesAdditionsTargetAction(
         client,

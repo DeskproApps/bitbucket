@@ -1,7 +1,5 @@
-import get from "lodash/get";
 import { Stack } from "@deskpro/deskpro-ui";
 import { BitbucketError } from "../../services/bitbucket";
-import { isAuthError, isAPIError } from "../../utils";
 import { Container, ErrorBlock } from "../common";
 import type { FC } from "react";
 import type { FallbackProps } from "react-error-boundary";
@@ -18,11 +16,9 @@ const ErrorFallback: FC<Props> = ({ error }) => {
   console.error(error);
 
   if (error instanceof BitbucketError) {
-    message = isAuthError(error.data)
-      ? get(error, ["data", "error_description"])
-      : isAPIError(error.data)
-      ? get(error, ["data", "error", "message"])
-      : message;
+    message = error.data.error_description
+      || error.data.error?.message
+      || message;
   }
 
   return (

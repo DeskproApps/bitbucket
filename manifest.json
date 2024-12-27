@@ -34,7 +34,7 @@
     "callback_url": {
       "title": "Callback URL",
       "type": "app_embedded",
-      "options": { "entrypoint": "#/admin/callback" },
+      "options": { "entrypoint": "#/admin/callback", "height": "60px" },
       "isRequired": false,
       "isBackendOnly": true,
       "order": 30

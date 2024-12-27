@@ -2,14 +2,13 @@ import { HorizontalDivider } from "@deskpro/app-sdk";
 import { Container, Search, Navigation } from "../common";
 import { Filters, Buttons, Issues } from "./blocks";
 import type { FC, Dispatch } from "react";
-import type { Maybe } from "../../types";
 import type { Repository, Issue } from "../../services/bitbucket/types";
 
 type Props = {
   isLoading: boolean,
   onChangeSearch?: (search: string) => void,
   repositories: Repository[],
-  selectedRepository: Maybe<Repository["full_name"]>,
+  selectedRepository: Repository["full_name"],
   onChangeRepository: Dispatch<Repository["full_name"]>,
   onCancel: () => void,
   onLinkIssues: () => void,

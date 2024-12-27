@@ -38,12 +38,14 @@ export type Settings = {
   key?: string,
 };
 
+export type DPTicket = {
+  id: string,
+  subject: string,
+  permalinkUrl: string,
+};
+
 export type TicketData = {
-  ticket: {
-    id: string,
-    subject: string,
-    permalinkUrl: string,
-  },
+  ticket: DPTicket,
 };
 
 export type TicketContext = Context<TicketData, Maybe<Settings>>;

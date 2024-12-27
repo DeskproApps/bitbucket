@@ -10,7 +10,7 @@ import {
   faCaretDown,
   faExternalLinkAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { Stack, DivAsInput, Dropdown } from "@deskpro/deskpro-ui";
+import { Stack, Dropdown, DivAsInput } from "@deskpro/deskpro-ui";
 import type { ReactNode } from "react";
 import type {
   AnyIcon,
@@ -118,19 +118,19 @@ const Select = <T,>({
       {({ targetRef, targetProps }: DropdownTargetProps<HTMLDivElement>) => (
         <DivAsInput
           id={id}
+          style={{ paddingRight: 0, cursor: !disabled ? "pointer" : "not-allowed" }}
           placeholder={placeholder || "Select Value"}
           variant="inline"
           rightIcon={faCaretDown as AnyIcon}
           error={error}
-          ref={targetRef}
-          {...targetProps}
           value={(!displayValue || isString(displayValue))
             ? trim(displayValue as string)
             : (
               <Stack gap={6} wrap="wrap" style={{ marginBottom: 6 }}>{displayValue}</Stack>
             )
           }
-          style={{ paddingRight: 0, cursor: !disabled ? "pointer" : "not-allowed" }}
+          {...targetProps}
+          ref={targetRef}
         />
       )}
     </Dropdown>

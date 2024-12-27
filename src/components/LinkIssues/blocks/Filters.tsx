@@ -2,12 +2,11 @@ import { useMemo } from "react";
 import { getOption } from "../../../utils";
 import { Select, Label } from "../../common";
 import type { FC, Dispatch } from "react";
-import type { Maybe } from "../../../types";
 import type { Repository } from "../../../services/bitbucket/types";
 
 type Props = {
   repositories: Repository[],
-  selectedRepository: Maybe<Repository["full_name"]>,
+  selectedRepository: Repository["full_name"],
   onChangeRepository: Dispatch<Repository["full_name"]>,
 };
 
