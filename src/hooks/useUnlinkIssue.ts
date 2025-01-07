@@ -11,7 +11,7 @@ import { useAsyncError } from "./useAsyncError";
 import { useLinkedAutoComment } from "./useLinkedAutoComment";
 import { useReplyBox } from "./useReplyBox";
 import { generateEntityId } from "../utils";
-import type { TicketContext } from "../types";
+import type { TicketData, Settings } from "../types";
 import type { Issue } from "../services/bitbucket/types";
 
 export type Result = {
@@ -22,7 +22,7 @@ export type Result = {
 const useUnlinkIssue = (): Result => {
   const navigate = useNavigate();
   const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  const { context } = useDeskproLatestAppContext<TicketData, Settings>();
   const { asyncErrorHandler } = useAsyncError();
   const { addUnlinkComment } = useLinkedAutoComment();
   const { deleteSelectionState } = useReplyBox();
@@ -32,7 +32,7 @@ const useUnlinkIssue = (): Result => {
   const unlink = useCallback((issue?: Issue) => {
     const issueMeta = generateEntityId(issue);
 
-    if (!client || !issueMeta || isEmpty(issue)) {
+    if (!client || !issueMeta || isEmpty(issue) || !ticketId) {
       return;
     }
 

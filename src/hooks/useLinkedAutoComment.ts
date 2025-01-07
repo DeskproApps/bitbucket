@@ -6,7 +6,7 @@ import {
 } from "@deskpro/app-sdk";
 import { createIssueCommentService } from "../services/bitbucket";
 import type { Issue, Comment } from "../services/bitbucket/types";
-import type { TicketContext } from "../types";
+import type { TicketData, Settings } from "../types";
 
 export type Result = {
   isLoading: boolean,
@@ -24,7 +24,7 @@ const getUnlinkedMessage = (ticketId: string, link?: string): string => {
 
 const useLinkedAutoComment = (): Result => {
   const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  const { context } = useDeskproLatestAppContext<TicketData, Settings>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const isEnable = get(context, ["settings", "add_comment_when_linking"], false);
@@ -32,7 +32,7 @@ const useLinkedAutoComment = (): Result => {
   const permalink = get(context, ["data", "ticket", "permalinkUrl"]);
 
   const addLinkComment = useCallback((issue: Issue) => {
-    if (!client || !isEnable) {
+    if (!client || !isEnable || !ticketId) {
       return Promise.resolve();
     }
 
@@ -47,7 +47,7 @@ const useLinkedAutoComment = (): Result => {
   }, [client, isEnable, ticketId, permalink]);
 
   const addUnlinkComment = useCallback((issue: Issue) => {
-    if (!client || !isEnable) {
+    if (!client || !isEnable || !ticketId) {
       return Promise.resolve();
     }
 
