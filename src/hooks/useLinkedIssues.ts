@@ -30,15 +30,15 @@ const useLinkedIssues: UseLinkedIssues = () => {
     return {
       queryKey: [QueryKey.ISSUE, issueMeta],
       queryFn: (client) => (!meta
-        ? Promise.resolve()
+        ? Promise.resolve(undefined)
         : getIssueService(client, meta.repo, meta.issueId)
-      ) as Promise<void|Issue>,
+      ),
       enabled: Boolean(size(linkedIds)),
-      useErrorBoundary: false,
+      useErrorBoundary: false
     }
   }));
 
-  const issues = useMemo(() => {
+  const issues = useMemo<Issue[]>(() => {
     return fetchedIssues.map(({ data }) => data).filter((issue): issue is Issue => Boolean(issue));
   }, [fetchedIssues]);
 
