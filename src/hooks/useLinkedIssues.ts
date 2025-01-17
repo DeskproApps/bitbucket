@@ -21,7 +21,7 @@ const useLinkedIssues: UseLinkedIssues = () => {
 
   const linkedIds = useQueryWithClient(
     [QueryKey.LINKED_TASKS, ticketId],
-    (client) => ticketId ? getEntityListService(client, ticketId) : Promise.resolve([]),
+    (client) => getEntityListService(client, ticketId),
     { enabled: Boolean(ticketId) }
   );
 
@@ -30,21 +30,21 @@ const useLinkedIssues: UseLinkedIssues = () => {
     return {
       queryKey: [QueryKey.ISSUE, issueMeta],
       queryFn: (client) => (!meta
-        ? Promise.resolve(undefined)
+        ? Promise.resolve()
         : getIssueService(client, meta.repo, meta.issueId)
-      ),
+      ) as Promise<void|Issue>,
       enabled: Boolean(size(linkedIds)),
-      useErrorBoundary: false
+      useErrorBoundary: false,
     }
   }));
 
-  const issues = useMemo<Issue[]>(() => {
-    return fetchedIssues.map(({ data }) => data).filter((issue): issue is Issue => Boolean(issue));
+  const issues = useMemo(() => {
+    return fetchedIssues.map(({ data }) => data).filter(Boolean)
   }, [fetchedIssues]);
 
   return {
     isLoading: [linkedIds, ...fetchedIssues].some(({ isLoading, isFetching }) => isLoading || isFetching),
-    issues
+    issues: issues as Issue[],
   };
 };
 
