@@ -58,9 +58,9 @@ const useLogin: UseLogin = () => {
   }, [callback, clientId, key]);
 
   const poll = useCallback(() => {
-    if (!client || !callback?.poll) {
+    if (!client || !callback?.poll || !ticketId) {
       return;
-    }
+    };
 
     setTimeout(() => setIsLoading(true), 1000);
 
