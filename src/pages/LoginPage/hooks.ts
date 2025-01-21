@@ -18,7 +18,7 @@ import { getQueryParams } from "../../utils";
 import { useAsyncError } from "../../hooks";
 import { AUTH_URL } from "../../constants";
 import type { OAuth2StaticCallbackUrl } from "@deskpro/app-sdk";
-import type { TicketContext } from "../../types";
+import type { TicketData, Settings } from "../../types";
 
 type UseLogin = () => {
   poll: () => void,
@@ -32,7 +32,7 @@ const useLogin: UseLogin = () => {
   const [callback, setCallback] = useState<OAuth2StaticCallbackUrl|undefined>();
   const [authUrl, setAuthUrl] = useState<string|null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  const { context } = useDeskproLatestAppContext<TicketData, Settings>();
   const { client } = useDeskproAppClient();
   const { asyncErrorHandler } = useAsyncError();
   const clientId = useMemo(() => get(context, ["settings", "key"]), [context]);
@@ -58,7 +58,7 @@ const useLogin: UseLogin = () => {
   }, [callback, clientId, key]);
 
   const poll = useCallback(() => {
-    if (!client || !callback?.poll) {
+    if (!client || !callback?.poll || !ticketId) {
       return;
     }
 

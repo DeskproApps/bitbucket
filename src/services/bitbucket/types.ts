@@ -1,18 +1,20 @@
 import type { Maybe, DateTime } from "../../types";
 
 export type BitbucketAuthError = {
-  error: string, // "invalid_grant"
+  error: string,
   error_description: string,
 };
 
-export type BitbucketAPIError = {
+export type BitbucketRestAPIError = {
   type: "error",
   error: {
     code: number,
     message: string,
-    detail: string, // "There is no API hosted at this URL.\n\nFor information about our API's, please refer to the documentation at: https://developer.atlassian.com/bitbucket/api/2/reference/"
+    detail: string,
   }
 };
+
+export type BitbucketAPIError = BitbucketAuthError & BitbucketRestAPIError;
 
 export type AccessToken = {
   token_type: "bearer",
