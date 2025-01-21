@@ -20,6 +20,7 @@ import {
   CreateIssuePage,
   AdminCallbackPage,
   CreateIssueCommentPage,
+  AccessTokenErrorPage
 } from "./pages";
 import { AppContainer } from "./components/common";
 import type { FC } from "react";
@@ -70,6 +71,7 @@ const App: FC = () => {
       <Routes>
         <Route path="/admin/callback" element={<AdminCallbackPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/access-token-error" element={<AccessTokenErrorPage />} />
         <Route path="/link" element={<LinkPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/issue/view" element={<ViewIssuePage />} />
