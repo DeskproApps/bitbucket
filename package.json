@@ -35,7 +35,7 @@
     "showdown": "^2.1.0",
     "styled-components": "^6.1.14",
     "ts-pattern": "^4.3.0",
-    "uuid": "^9.0.1",
+    "uuid": "^11.0.5",
     "zod": "^3.24.1"
   },
   "devDependencies": {
