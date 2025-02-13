@@ -4,7 +4,7 @@ import { Container, AnchorButton } from "../common";
 import type { FC } from "react";
 
 type Props = {
-  authUrl: string|null,
+  authUrl: string,
   onLogin: () => void,
   isLoading: boolean,
 };
