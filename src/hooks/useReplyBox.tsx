@@ -183,7 +183,9 @@ const ReplyBoxProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [client, ticketId, issuesMap]);
 
   useInitialisedDeskproAppClient((client) => {
-    if (!ticketId) return;
+    if (!ticketId) {
+      return;
+    };
 
     if (isCommentOnNote) {
       registerReplyBoxNotesAdditionsTargetAction(

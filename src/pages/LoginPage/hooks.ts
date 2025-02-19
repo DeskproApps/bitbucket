@@ -19,6 +19,7 @@ import { useAsyncError } from "../../hooks";
 import { AUTH_URL } from "../../constants";
 import type { OAuth2StaticCallbackUrl } from "@deskpro/app-sdk";
 import type { TicketData, Settings } from "../../types";
+import AccessTokenError from '../../errors/AccessTokenError';
 
 type UseLogin = () => {
   poll: () => void,
@@ -60,7 +61,7 @@ const useLogin: UseLogin = () => {
   const poll = useCallback(() => {
     if (!client || !callback?.poll || !ticketId) {
       return;
-    }
+    };
 
     setTimeout(() => setIsLoading(true), 1000);
 
@@ -73,7 +74,13 @@ const useLogin: UseLogin = () => {
       .then(() => getCurrentUserService(client))
       .then(() => getEntityListService(client, ticketId))
       .then((entityIds) => navigate(size(entityIds) ? "/home" : "/link"))
-      .catch(asyncErrorHandler);
+      .catch(error => {
+        if (error instanceof AccessTokenError) {
+          navigate('/access-token-error');
+        };
+
+        asyncErrorHandler(error);
+      });
   }, [client, callback, navigate, ticketId, asyncErrorHandler]);
 
   return { authUrl, poll, isLoading };

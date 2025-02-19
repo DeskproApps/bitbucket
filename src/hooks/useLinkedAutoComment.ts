@@ -34,7 +34,7 @@ const useLinkedAutoComment = (): Result => {
   const addLinkComment = useCallback((issue: Issue) => {
     if (!client || !isEnable || !ticketId) {
       return Promise.resolve();
-    }
+    };
 
     setIsLoading(true);
     return createIssueCommentService(
@@ -49,7 +49,7 @@ const useLinkedAutoComment = (): Result => {
   const addUnlinkComment = useCallback((issue: Issue) => {
     if (!client || !isEnable || !ticketId) {
       return Promise.resolve();
-    }
+    };
 
     setIsLoading(true)
     return createIssueCommentService(

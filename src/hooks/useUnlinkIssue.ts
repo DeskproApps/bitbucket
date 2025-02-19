@@ -34,7 +34,7 @@ const useUnlinkIssue = (): Result => {
 
     if (!client || !issueMeta || isEmpty(issue) || !ticketId) {
       return;
-    }
+    };
 
     setIsLoading(true);
     Promise.all([

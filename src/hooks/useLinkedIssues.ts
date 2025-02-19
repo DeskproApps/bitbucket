@@ -20,8 +20,8 @@ const useLinkedIssues: UseLinkedIssues = () => {
   const ticketId = get(context, ["data", "ticket", "id"]);
 
   const linkedIds = useQueryWithClient(
-    [QueryKey.LINKED_TASKS, ticketId as DPTicket["id"]],
-    (client) => getEntityListService(client, ticketId as DPTicket["id"]),
+    [QueryKey.LINKED_TASKS],
+    (client) => ticketId ? getEntityListService(client, ticketId) : Promise.resolve([]),
     { enabled: Boolean(ticketId) }
   );
 
