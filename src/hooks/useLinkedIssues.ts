@@ -7,7 +7,7 @@ import { getIssueService } from "../services/bitbucket";
 import { useQueriesWithClient } from "./useQueriesWithClient";
 import { parseEntityId } from "../utils";
 import { QueryKey } from "../query";
-import type { TicketData, Settings, DPTicket } from "../types";
+import type { TicketData, Settings } from "../types";
 import type { Issue } from "../services/bitbucket/types";
 
 type UseLinkedIssues = () => {
@@ -32,7 +32,7 @@ const useLinkedIssues: UseLinkedIssues = () => {
       queryFn: (client) => (!meta
         ? Promise.resolve()
         : getIssueService(client, meta.repo, meta.issueId)
-      ) as Promise<void|Issue>,
+      ) as Promise<void | Issue>,
       enabled: Boolean(size(linkedIds)),
       useErrorBoundary: false,
     }
