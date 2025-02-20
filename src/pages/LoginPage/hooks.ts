@@ -41,7 +41,7 @@ const useLogin: UseLogin = () => {
 
     if (mode === 'local' && typeof key !== 'string') return;
 
-    const oauth2 = mode === 'global' ? await client.startOauth2Global('global') : await client.startOauth2Local(
+    const oauth2 = mode === 'global' ? await client.startOauth2Global('C5KLdwRdKdDQF2PmWs') : await client.startOauth2Local(
       ({ state }) => {
         return `${AUTH_URL}/authorize?${getQueryParams({
           client_id: key,
