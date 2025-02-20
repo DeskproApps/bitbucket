@@ -5,10 +5,6 @@ import { Filters } from "../Filters";
 
 describe("LinkIssues", () => {
   describe("Filters", () => {
-    beforeAll(() => {
-      window.HTMLElement.prototype.scrollTo = jest.fn();
-    });
-
     afterEach(() => {
       jest.clearAllMocks();
       cleanup();

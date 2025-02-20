@@ -32,9 +32,9 @@ const useLinkedAutoComment = (): Result => {
   const permalink = get(context, ["data", "ticket", "permalinkUrl"]);
 
   const addLinkComment = useCallback((issue: Issue) => {
-    if (!client || !isEnable || !ticketId) {
+    if (!client || !isEnable) {
       return Promise.resolve();
-    };
+    }
 
     setIsLoading(true);
     return createIssueCommentService(
@@ -47,9 +47,9 @@ const useLinkedAutoComment = (): Result => {
   }, [client, isEnable, ticketId, permalink]);
 
   const addUnlinkComment = useCallback((issue: Issue) => {
-    if (!client || !isEnable || !ticketId) {
+    if (!client || !isEnable) {
       return Promise.resolve();
-    };
+    }
 
     setIsLoading(true)
     return createIssueCommentService(

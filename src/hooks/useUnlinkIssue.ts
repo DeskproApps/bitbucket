@@ -32,9 +32,9 @@ const useUnlinkIssue = (): Result => {
   const unlink = useCallback((issue?: Issue) => {
     const issueMeta = generateEntityId(issue);
 
-    if (!client || !issueMeta || isEmpty(issue) || !ticketId) {
+    if (!client || !issueMeta || isEmpty(issue)) {
       return;
-    };
+    }
 
     setIsLoading(true);
     Promise.all([
