@@ -47,7 +47,7 @@ const useLogin: UseLogin = () => {
           client_id: key,
           state,
           response_type: 'code'
-        })}`
+        })}`;
       },
       /code=(?<code>[0-9a-zA-Z]+)/,
       async code => {
@@ -62,9 +62,7 @@ const useLogin: UseLogin = () => {
     setAuthUrl(oauth2.authorizationUrl);
 
     try {
-      console.log(1)
       const pollResult = await oauth2.poll();
-      console.log(2, pollResult)
 
       await setAccessTokenService(client, pollResult.data.access_token);
       pollResult.data.refresh_token && await setRefreshTokenService(client, pollResult.data.refresh_token);

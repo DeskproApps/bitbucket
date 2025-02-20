@@ -46,7 +46,7 @@ const AdminCallbackPage: FC = () => {
           client_id: key ?? '',
           state,
           response_type: 'code'
-        })}`
+        })}`;
       },
       /code=(?<code>[0-9a-zA-Z]+)/,
       async () => ({ data: { access_token: '' } }),
