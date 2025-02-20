@@ -29,7 +29,7 @@ const baseRequest: Request = async (client, {
     },
   };
 
-  if (data instanceof FormData) {
+  if (typeof data === 'string') {
     options.body = data;
   } else if (!isEmpty(data)) {
     options.body = JSON.stringify(data);
@@ -37,7 +37,7 @@ const baseRequest: Request = async (client, {
       "Content-Type": "application/json",
       ...options.headers,
     };
-  }
+  };
 
   const res = await dpFetch(requestUrl, options);
 
