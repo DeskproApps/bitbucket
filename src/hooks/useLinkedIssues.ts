@@ -7,7 +7,7 @@ import { getIssueService } from "../services/bitbucket";
 import { useQueriesWithClient } from "./useQueriesWithClient";
 import { parseEntityId } from "../utils";
 import { QueryKey } from "../query";
-import type { TicketContext } from "../types";
+import type { TicketData, Settings } from "../types";
 import type { Issue } from "../services/bitbucket/types";
 
 type UseLinkedIssues = () => {
@@ -16,7 +16,7 @@ type UseLinkedIssues = () => {
 };
 
 const useLinkedIssues: UseLinkedIssues = () => {
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
+  const { context } = useDeskproLatestAppContext<TicketData, Settings>();
   const ticketId = get(context, ["data", "ticket", "id"]);
 
   const linkedIds = useQueryWithClient(
@@ -32,7 +32,7 @@ const useLinkedIssues: UseLinkedIssues = () => {
       queryFn: (client) => (!meta
         ? Promise.resolve()
         : getIssueService(client, meta.repo, meta.issueId)
-      ) as Promise<void|Issue>,
+      ) as Promise<void | Issue>,
       enabled: Boolean(size(linkedIds)),
       useErrorBoundary: false,
     }

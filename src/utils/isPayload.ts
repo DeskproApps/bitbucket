@@ -1,6 +1,6 @@
 import has from "lodash/has";
 import type { EventPayload, NavigateToChangePage } from "../types";
-import type { BitbucketAPIError, BitbucketAuthError } from "../services/bitbucket/types";
+import type { BitbucketRestAPIError, BitbucketAuthError } from "../services/bitbucket/types";
 
 const isNavigatePayload = (
   payload: EventPayload
@@ -9,14 +9,14 @@ const isNavigatePayload = (
 };
 
 const isAuthError = (
-  error: BitbucketAPIError|BitbucketAuthError,
+  error: BitbucketRestAPIError|BitbucketAuthError,
 ): error is BitbucketAuthError => {
   return has(error, ["error_description"]);
 };
 
 const isAPIError = (
-  error: BitbucketAPIError|BitbucketAuthError,
-): error is BitbucketAPIError => {
+  error: BitbucketRestAPIError|BitbucketAuthError,
+): error is BitbucketRestAPIError => {
   return has(error, ["error", "message"]);
 };
 
