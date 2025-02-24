@@ -8,6 +8,7 @@
   "isSingleInstall": false,
   "hasDevMode": true,
   "serveUrl": "https://apps-cdn.deskpro-service.com/__name__/__version__",
+  "secrets": "P97PXd6rTLcupMliz6qMr0xnLk0IVAZsTdBC0YLFtlKrGj21r8J/yGgHdLyy2YjjT/6kIjaMsA/MJoR/vkLZTq9qPC/zv4z4wld1S3lwfgHe3SeMdlwaiGA28qGK7R7VStUOeSK3LkpVEqj0CVd79kxtF3ByXpL8XNfvUxKl0pUXctAFf3LyW5JK7cqRc/lHXG3uicjX71Q8zNuzDkrDjoref27O0M8C8vp5upoMt9iQjZHMD+iMXYTM/G0/0ex5BkMMvExD6itshj9bOK2j+0RgXKGpZtRLngOfIaLDiv+rKBHIOw/DDak53/cmbZJUQLoFBl76WPHbst/Q9kA1/ulbsITVIVzi6fbFNlyQzTL85umKxT1Oc6bXiWBZWIF1cqK4A4vWqNIc/Nye9rfCdj7Qls4h8NdxCd+9GeBQ+t2ECG2FLf6s5qACD/DWNXKVPRP2u/40cxX/m8ZL+jSXWLvh8YDMDuPQzXjgh4JK74YYvN0jwQxxEn/UzXYUBWeTH6SZz/FiUZVhkSvORguFWBDGU5OdkxvD07HSWAScrhOShwhAKpmss4OogLtxIg3WzaOeCz5GTm1rRotb9Jc7nB1bHp8q7xn14nTItohXJh0kYEAe+/cJ21s5UBwSHpzAvG1wYKUh1GUJGymEo+6Ew4s5I89iZ69dukzE1/uxUF0=",
   "targets": [{ "target": "ticket_sidebar", "entrypoint": "index.html" }],
   "entityAssociations": {
     "linkedBitbucketIssue": {
