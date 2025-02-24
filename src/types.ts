@@ -22,7 +22,7 @@ export type RequestParams = {
   url?: string,
   rawUrl?: string,
   method?: ApiRequestMethod,
-  data?: object,
+  data?: object | string,
   type?: HttpResponseType,
   headers?: Dict<string>,
   queryParams?: string|Dict<string>|ParamKeyValuePair[],
