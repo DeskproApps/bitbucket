@@ -48,8 +48,8 @@ const AdminCallbackPage: FC = () => {
           response_type: 'code'
         })}`;
       },
-      /code=(?<code>[0-9a-zA-Z]+)/,
-      async () => ({ data: { access_token: '' } }),
+      /^$/,
+      async () => ({data: {access_token: ''}}),
       {
         pollInterval: 10000,
         timeout: 600
