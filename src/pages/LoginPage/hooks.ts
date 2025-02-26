@@ -14,7 +14,7 @@ import {
 import { getAccessTokenService, getCurrentUserService } from "../../services/bitbucket";
 import { getQueryParams } from "../../utils";
 import { useAsyncError } from "../../hooks";
-import { AUTH_URL } from "../../constants";
+import { AUTH_URL, GLOBAL_CLIENT_ID } from '../../constants';
 import type { Settings } from '../../types';
 import AccessTokenError from '../../errors/AccessTokenError';
 
@@ -40,7 +40,7 @@ const useLogin: UseLogin = () => {
 
     if (mode === 'local' && typeof key !== 'string') return;
 
-    const oauth2 = mode === 'global' ? await client.startOauth2Global('C5KLdwRdKdDQF2PmWs') : await client.startOauth2Local(
+    const oauth2 = mode === 'global' ? await client.startOauth2Global(GLOBAL_CLIENT_ID) : await client.startOauth2Local(
       ({ state }) => {
         return `${AUTH_URL}/authorize?${getQueryParams({
           client_id: key,
