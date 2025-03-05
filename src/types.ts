@@ -35,7 +35,8 @@ export type Request = <T>(
 
 /** Deskpro types */
 export type Settings = {
-  key?: string,
+  key: string;
+  use_deskpro_saas: boolean;
 };
 
 export type TicketData = {

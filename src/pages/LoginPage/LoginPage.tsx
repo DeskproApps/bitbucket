@@ -5,7 +5,7 @@ import { Login } from "../../components";
 import type { FC } from "react";
 
 const LoginPage: FC = () => {
-  const { poll, authUrl, isLoading } = useLogin();
+  const { onLogIn, authUrl, isLoading } = useLogin();
 
   useSetTitle("Bitbucket");
 
@@ -15,7 +15,7 @@ const LoginPage: FC = () => {
   });
 
   return (
-    <Login onLogin={poll} authUrl={authUrl} isLoading={isLoading} />
+    <Login onLogin={onLogIn} authUrl={authUrl} isLoading={isLoading} />
   );
 };
 

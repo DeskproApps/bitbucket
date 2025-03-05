@@ -21,6 +21,8 @@ export const placeholders = {
   SECRET: "__secret__",
 };
 
+export const GLOBAL_CLIENT_ID = '5d4xDfqU3QVLUGZRxK';
+
 /** Bitbucket */
 export const BITBUCKET_URL = "https://api.bitbucket.org/2.0";
 export const AUTH_URL = "https://bitbucket.org/site/oauth2";
