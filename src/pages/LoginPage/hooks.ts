@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import get from "lodash/get";
 import size from "lodash/size";
 import {
+  IOAuth2,
   useDeskproLatestAppContext,
   useInitialisedDeskproAppClient,
 } from "@deskpro/app-sdk";
@@ -31,6 +32,8 @@ const useLogin: UseLogin = () => {
   const { context } = useDeskproLatestAppContext<unknown, Settings>();
   const { asyncErrorHandler } = useAsyncError();
   const ticketId = useMemo(() => get(context, ["data", "ticket", "id"]), [context]);
+  const [isPolling, setIsPolling] = useState(false);
+  const [oAuth2Context, setOAuth2Context] = useState<IOAuth2 | null>(null);
 
   useInitialisedDeskproAppClient(async client => {
     if (context?.settings.use_deskpro_saas === undefined) return;
@@ -40,7 +43,7 @@ const useLogin: UseLogin = () => {
 
     if (mode === 'local' && typeof key !== 'string') return;
 
-    const oauth2 = mode === 'global' ? await client.startOauth2Global(GLOBAL_CLIENT_ID) : await client.startOauth2Local(
+    const oauth2Response = mode === 'global' ? await client.startOauth2Global(GLOBAL_CLIENT_ID) : await client.startOauth2Local(
       ({ state }) => {
         return `${AUTH_URL}/authorize?${getQueryParams({
           client_id: key,
@@ -58,33 +61,48 @@ const useLogin: UseLogin = () => {
       }
     );
 
-    setAuthUrl(oauth2.authorizationUrl);
+    setAuthUrl(oauth2Response.authorizationUrl);
+    setOAuth2Context(oauth2Response);
+  }, [context]);
 
-    try {
-      const pollResult = await oauth2.poll();
-
-      await setAccessTokenService(client, pollResult.data.access_token);
-      pollResult.data.refresh_token && await setRefreshTokenService(client, pollResult.data.refresh_token);
-      await getCurrentUserService(client);
-
-      const entityIDs = await getEntityListService(client, ticketId);
-
-      navigate(size(entityIDs) ? '/home' : '/link');
-    } catch (error) {
-      if (error instanceof AccessTokenError) {
-        navigate('/access-token-error');
-      } else if (error instanceof Error) {
-        asyncErrorHandler(error);
-      } else {
-        asyncErrorHandler(new Error('Unknown Error'));
-      };
-    } finally {
-      setIsLoading(false);
+  useInitialisedDeskproAppClient(client => {
+    if (!oAuth2Context) {
+      return;
     };
-  }, []);
+
+    const startPolling = async () => {
+      try {
+        const pollResult = await oAuth2Context.poll();
+
+        await setAccessTokenService(client, pollResult.data.access_token);
+        pollResult.data.refresh_token && await setRefreshTokenService(client, pollResult.data.refresh_token);
+        await getCurrentUserService(client);
+
+        const entityIDs = await getEntityListService(client, ticketId);
+
+        navigate(size(entityIDs) ? '/home' : '/link');
+      } catch (error) {
+        if (error instanceof AccessTokenError) {
+          navigate('/access-token-error');
+        } else if (error instanceof Error) {
+          asyncErrorHandler(error);
+        } else {
+          asyncErrorHandler(new Error('Unknown Error'));
+        };
+      } finally {
+        setIsPolling(false);
+        setIsLoading(false);
+      };
+    };
+
+    if (isPolling) {
+      startPolling();
+    };
+  }, [oAuth2Context, navigate, isPolling]);
 
   const onLogIn = useCallback(() => {
     setIsLoading(true);
+    setIsPolling(true);
     window.open(authUrl, '_blank');
   }, [setIsLoading, authUrl]);
 
