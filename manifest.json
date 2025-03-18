@@ -18,12 +18,12 @@
     }
   },
   "settings": {
-    "use_deskpro_saas": {
-      "title": "One-Click Installation",
+    "use_advanced_connect": {
+      "title": "Advanced Connect",
+      "description": "Follow the setup guide and use your credentials to connect the app to Deskpro",
       "type": "boolean",
       "isRequired": false,
       "isBackendOnly": false,
-      "default": true,
       "order": 5
     },
     "key": {
@@ -31,7 +31,7 @@
       "type": "string",
       "isRequired": false,
       "isBackendOnly": false,
-      "condition": "settings.use_deskpro_saas != true",
+      "condition": "settings.use_advanced_connect == true",
       "order": 10
     },
     "secret": {
@@ -39,16 +39,19 @@
       "type": "string",
       "isRequired": false,
       "isBackendOnly": true,
-      "condition": "settings.use_deskpro_saas != true",
+      "condition": "settings.use_advanced_connect == true",
       "order": 20
     },
     "callback_url": {
       "title": "Callback URL",
       "type": "app_embedded",
-      "options": { "entrypoint": "#/admin/callback" },
+      "options": {
+        "entrypoint": "#/admin/callback",
+        "height": "100px"
+      },
       "isRequired": false,
       "isBackendOnly": true,
-      "condition": "settings.use_deskpro_saas != true",
+      "condition": "settings.use_advanced_connect == true",
       "order": 30
     },
     "add_comment_when_linking": {

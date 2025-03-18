@@ -33,12 +33,12 @@ const useLogin: UseLogin = () => {
   const [oAuth2Context, setOAuth2Context] = useState<IOAuth2 | null>(null);
 
   useInitialisedDeskproAppClient(async client => {
-    if (context?.settings.use_deskpro_saas === undefined) {
+    if (context?.settings.use_advanced_connect === undefined) {
       return;
     };
 
     const key = context.settings.key;
-    const mode = context?.settings.use_deskpro_saas ? 'global' : 'local';
+    const mode = context?.settings.use_advanced_connect ? 'local' : 'global';
 
     if (mode === 'local' && typeof key !== 'string') {
       return;
