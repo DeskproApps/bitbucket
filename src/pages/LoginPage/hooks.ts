@@ -1,7 +1,5 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
-import get from "lodash/get";
-import size from "lodash/size";
 import {
   IOAuth2,
   useDeskproLatestAppContext,
@@ -16,7 +14,7 @@ import { getAccessTokenService, getCurrentUserService } from "../../services/bit
 import { getQueryParams } from "../../utils";
 import { useAsyncError } from "../../hooks";
 import { AUTH_URL, GLOBAL_CLIENT_ID } from '../../constants';
-import type { Settings } from '../../types';
+import type { Settings, TicketData } from '../../types';
 import AccessTokenError from '../../errors/AccessTokenError';
 
 type UseLogin = () => {
@@ -29,19 +27,22 @@ const useLogin: UseLogin = () => {
   const navigate = useNavigate();
   const [authUrl, setAuthUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { context } = useDeskproLatestAppContext<unknown, Settings>();
+  const { context } = useDeskproLatestAppContext<TicketData, Settings>();
   const { asyncErrorHandler } = useAsyncError();
-  const ticketId = useMemo(() => get(context, ["data", "ticket", "id"]), [context]);
   const [isPolling, setIsPolling] = useState(false);
   const [oAuth2Context, setOAuth2Context] = useState<IOAuth2 | null>(null);
 
   useInitialisedDeskproAppClient(async client => {
-    if (context?.settings.use_deskpro_saas === undefined) return;
+    if (context?.settings.use_deskpro_saas === undefined) {
+      return;
+    };
 
     const key = context.settings.key;
     const mode = context?.settings.use_deskpro_saas ? 'global' : 'local';
 
-    if (mode === 'local' && typeof key !== 'string') return;
+    if (mode === 'local' && typeof key !== 'string') {
+      return;
+    };
 
     const oauth2Response = mode === 'global' ? await client.startOauth2Global(GLOBAL_CLIENT_ID) : await client.startOauth2Local(
       ({ state }) => {
@@ -66,7 +67,9 @@ const useLogin: UseLogin = () => {
   }, [context]);
 
   useInitialisedDeskproAppClient(client => {
-    if (!oAuth2Context) {
+    const ticketID = context?.data?.ticket.id;
+
+    if (!oAuth2Context || !ticketID) {
       return;
     };
 
@@ -78,9 +81,9 @@ const useLogin: UseLogin = () => {
         pollResult.data.refresh_token && await setRefreshTokenService(client, pollResult.data.refresh_token);
         await getCurrentUserService(client);
 
-        const entityIDs = await getEntityListService(client, ticketId);
+        const entityIDs = await getEntityListService(client, ticketID);
 
-        navigate(size(entityIDs) ? '/home' : '/link');
+        navigate(entityIDs.length > 0 ? '/home' : '/link');
       } catch (error) {
         if (error instanceof AccessTokenError) {
           navigate('/access-token-error');
@@ -98,7 +101,7 @@ const useLogin: UseLogin = () => {
     if (isPolling) {
       startPolling();
     };
-  }, [oAuth2Context, navigate, isPolling]);
+  }, [context, oAuth2Context, navigate, isPolling]);
 
   const onLogIn = useCallback(() => {
     setIsLoading(true);
