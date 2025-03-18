@@ -24,6 +24,7 @@
       "type": "boolean",
       "isRequired": false,
       "isBackendOnly": false,
+      "default": false,
       "order": 5
     },
     "key": {
