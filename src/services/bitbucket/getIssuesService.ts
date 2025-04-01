@@ -24,31 +24,25 @@ export async function getIssuesService(
       data: issues,
     };
   } catch (e) {
-    let message: string | null = null;
-
     if (e instanceof BitbucketError && isBitbucketAPIError(e.data)) {
-      // Return a custom error while considering false positives
-      if (
-        e.data.error?.message === "Resource not found" &&
-        repo &&
-        repo.trim() !== ""
-      ) {
+      const { error } = e.data;
+      const message = error?.message ?? "Error retrieving issues";
+
+      // Early return for the Jira issues bug.
+      if (message === "Resource not found" && repo?.trim() !== "") {
         return {
           success: false,
           errorCode: "jira-issues-bug",
-          message:
-            "Unable to retrieve issues as this repository uses Jira issues.",
+          message: "Unable to retrieve issues as this repository uses Jira issues.",
           error: e,
         };
-      } else {
-        message = e.data.error?.message;
       }
+
+      // All other Bitbucket errors.
+      return { success: false, message, error: e };
     }
 
-    return {
-      success: false,
-      message: message ?? "Error retrieving issues",
-      error: e,
-    };
+    // For errors that aren't Bitbucket errors.
+    return { success: false, message: e instanceof Error ? e.message : "Error retrieving issues", error: e };
   }
 }
