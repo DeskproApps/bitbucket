@@ -1,13 +1,13 @@
 import type { BitbucketAuthError, BitbucketAPIError } from "./types";
 
 export type InitData = {
-  status: number,
-  data: BitbucketAPIError,
+  status: number;
+  data: BitbucketAPIError;
 };
 
 class BitbucketError extends Error {
   status: number;
-  data: BitbucketAuthError|BitbucketAPIError;
+  data: BitbucketAuthError | BitbucketAPIError;
 
   constructor({ status, data }: InitData) {
     const message = "Bitbucket Api Error";
@@ -18,4 +18,9 @@ class BitbucketError extends Error {
   }
 }
 
-export { BitbucketError };
+function isBitbucketAPIError(data: unknown): data is BitbucketAPIError {
+
+  return data !== null && typeof data === "object" && "error" in data;
+}
+
+export { BitbucketError, isBitbucketAPIError };
