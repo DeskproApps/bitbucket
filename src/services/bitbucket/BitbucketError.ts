@@ -19,11 +19,8 @@ class BitbucketError extends Error {
 }
 
 function isBitbucketAPIError(data: unknown): data is BitbucketAPIError {
-  if (!data) {
-    return false;
-  }
 
-  return data && typeof data === "object" && "error" in data;
+  return data !== null && typeof data === "object" && "error" in data;
 }
 
 export { BitbucketError, isBitbucketAPIError };
