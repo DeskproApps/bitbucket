@@ -1,65 +1,71 @@
-import { useState, useCallback, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import get from "lodash/get";
-import size from "lodash/size";
-import cloneDeep from "lodash/cloneDeep";
-import {
-  useDeskproElements,
-  useDeskproAppClient,
-  useDeskproLatestAppContext,
-} from "@deskpro/app-sdk";
-import {
-  useSetTitle,
-  useReplyBox,
-  useAsyncError,
-  useLinkedAutoComment,
-} from "../../hooks";
-import { useSearchIssues } from "./hooks";
-import { setEntityService } from "../../services/deskpro";
 import { getFilteredIssues, generateEntityId } from "../../utils";
 import { LinkIssues } from "../../components";
+import { setEntityService } from "../../services/deskpro";
+import { Settings, TicketData } from "../../types";
+import { useDeskproAppClient, useDeskproElements, useDeskproLatestAppContext } from "@deskpro/app-sdk";
+import { useLinkedAutoComment, useReplyBox, useSetTitle } from "../../hooks";
+import { useNavigate } from "react-router-dom";
+import { useSearchIssues } from "./hooks";
+import { useState, useCallback, useEffect } from "react";
 import type { FC } from "react";
-import type { TicketContext } from "../../types";
 import type { Repository, Issue } from "../../services/bitbucket/types";
 
 const LinkPage: FC = () => {
-  const navigate = useNavigate();
-  const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext() as { context: TicketContext };
-  const { asyncErrorHandler } = useAsyncError();
-  const { addLinkComment } = useLinkedAutoComment();
-  const { setSelectionState } = useReplyBox();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedRepository, setSelectedRepository] = useState<Repository["full_name"]|"">("");
   const [selectedIssues, setSelectedIssues] = useState<Issue[]>([]);
-  const { repositories, issues, isLoading } = useSearchIssues(selectedRepository);
-  const ticketId = get(context, ["data", "ticket", "id"]);
+  const [selectedRepository, setSelectedRepository] = useState<Repository["full_name"] | "">("");
+
+  const { addLinkComment } = useLinkedAutoComment();
+  const { client } = useDeskproAppClient();
+  const { context } = useDeskproLatestAppContext<TicketData, Settings>();
+  const {
+    repositories,
+    issues,
+    isLoading,
+    error: issuesError,
+  } = useSearchIssues(selectedRepository);
+  const { setSelectionState } = useReplyBox();
+
+  const navigate = useNavigate();
+
+  const ticketId = context?.data?.ticket.id;
 
   const onChangeSearch = useCallback((search: string) => {
     setSearchQuery(search);
   }, []);
 
-  const onChangeSelectedIssue = useCallback((issue: Issue) => {
-    let newSelectedIssues = cloneDeep(selectedIssues);
+  const onChangeSelectedIssue = useCallback(
+    (issue: Issue) => {
+      let newSelectedIssues = structuredClone(selectedIssues);
 
-    if (selectedIssues.some((selectedIssue) => generateEntityId(issue) === generateEntityId(selectedIssue))) {
-      newSelectedIssues = selectedIssues.filter((selectedIssue) => {
-        return generateEntityId(selectedIssue) !== generateEntityId(issue);
-      });
-    } else {
-      newSelectedIssues.push(issue);
-    }
+      if (
+        selectedIssues.some(
+          (selectedIssue) =>
+            generateEntityId(issue) === generateEntityId(selectedIssue)
+        )
+      ) {
+        newSelectedIssues = selectedIssues.filter((selectedIssue) => {
+          return generateEntityId(selectedIssue) !== generateEntityId(issue);
+        });
+      } else {
+        newSelectedIssues.push(issue);
+      }
 
-    setSelectedIssues(newSelectedIssues);
-  }, [selectedIssues]);
+      setSelectedIssues(newSelectedIssues);
+    },
+    [selectedIssues]
+  );
 
   const onCancel = useCallback(() => navigate("/home"), [navigate]);
 
-  const onNavigateToCreate = useCallback(() => navigate("/issue/create"), [navigate]);
+  const onNavigateToCreate = useCallback(
+    () => navigate("/issue/create"),
+    [navigate]
+  );
 
   const onLinkIssues = useCallback(() => {
-    if (!client || !ticketId || !size(selectedIssues)) {
+    if (!client || !ticketId || selectedIssues.length < 1) {
       return;
     }
 
@@ -68,7 +74,9 @@ const LinkPage: FC = () => {
     return Promise.all([
       ...selectedIssues.map((issue) => {
         const issueData = generateEntityId(issue);
-        return !issueData ? Promise.resolve() : setEntityService(client, ticketId, issueData)
+        return !issueData
+          ? Promise.resolve()
+          : setEntityService(client, ticketId, issueData);
       }),
       ...selectedIssues.map((issue) => addLinkComment(issue)),
       ...selectedIssues.map((issue) => setSelectionState(issue, true, "email")),
@@ -78,8 +86,15 @@ const LinkPage: FC = () => {
         setIsSubmitting(false);
         navigate("/home");
       })
-      .catch(asyncErrorHandler);
-  }, [client, navigate, asyncErrorHandler, selectedIssues, ticketId, addLinkComment, setSelectionState]);
+      .catch(() => {});
+  }, [
+    client,
+    navigate,
+    selectedIssues,
+    ticketId,
+    addLinkComment,
+    setSelectionState,
+  ]);
 
   useSetTitle("Link Issues");
 
@@ -94,7 +109,7 @@ const LinkPage: FC = () => {
 
   // At the beginning, we choose the first repository
   useEffect(() => {
-    setSelectedRepository(get(repositories, [0, "full_name"], ""));
+    setSelectedRepository(repositories[0]?.full_name ?? "");
   }, [repositories]);
 
   return (
@@ -111,6 +126,7 @@ const LinkPage: FC = () => {
       issues={getFilteredIssues(issues, { query: searchQuery })}
       onChangeSelectedIssue={onChangeSelectedIssue}
       onNavigateToCreate={onNavigateToCreate}
+      error={{ general: issuesError }}
     />
   );
 };
