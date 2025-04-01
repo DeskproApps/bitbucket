@@ -86,7 +86,7 @@ const LinkPage: FC = () => {
         setIsSubmitting(false);
         navigate("/home");
       })
-      .catch(() => {});
+      .catch(() => { });
   }, [
     client,
     navigate,
@@ -126,7 +126,7 @@ const LinkPage: FC = () => {
       issues={getFilteredIssues(issues, { query: searchQuery })}
       onChangeSelectedIssue={onChangeSelectedIssue}
       onNavigateToCreate={onNavigateToCreate}
-      error={{ general: issuesError }}
+      error={issuesError}
     />
   );
 };

@@ -18,9 +18,7 @@ type Props = {
   issues: Issue[];
   onChangeSelectedIssue: (issue: Issue) => void;
   onNavigateToCreate: () => void;
-  error?: {
-    general?: string;
-  };
+  error?: string;
 };
 
 const LinkIssues: FC<Props> = ({
@@ -41,7 +39,7 @@ const LinkIssues: FC<Props> = ({
   return (
     <>
       <Container>
-        {error && error.general && <ErrorBlock text={error.general} />}
+        {error  && <ErrorBlock text={error} />}
 
         <Navigation selected="one" onTwoNavigate={onNavigateToCreate} />
         <Search onChange={onChangeSearch} />
