@@ -43,8 +43,7 @@ const useSearchIssues: UseSearchIssues = (repo) => {
     // could be used to redirect the user to the login page if their session expires.
     if (!issuesResponse.data?.success && repo?.trim() !== "") {
       setError(
-        issuesResponse.data?.message ??
-          "An error occurred while retrieving issues."
+        issuesResponse.data?.message
       );
     }
   }, [issuesResponse.data, repo]);
