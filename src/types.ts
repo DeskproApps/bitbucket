@@ -44,7 +44,7 @@ interface SuccessResult<TData = unknown> {
 
 interface FailResult<TError = unknown> {
   success: false;
-  message?: string;
+  message: string;
   errorCode?: string;
   error: TError;
 }
