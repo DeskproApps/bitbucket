@@ -3,41 +3,41 @@
     <div xmlns="http://www.w3.org/1999/xhtml">
       <style>
         .container {
-          width: 100%;
-          margin: 0;
-          padding: 28px;
-          box-sizing: border-box;
-          display: flex;
-          gap: 50px;
-          flex-direction: column;
-          color: white;
-          font-family: 'Arial', sans-serif;
-          text-align: center;
+        width: 100%;
+        margin: 0;
+        padding: 28px;
+        box-sizing: border-box;
+        display: flex;
+        gap: 50px;
+        flex-direction: column;
+        color: white;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
         }
 
         .logosWrapper {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 48px
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 48px
         }
 
         .logoBox {
-          width: 193.37px;
-          height: 193.37px;
+        width: 193.37px;
+        height: 193.37px;
         }
 
         .logoBoxContent {
-          width: 193.37px;
-          height: 193.37px;
-          background-color: white;
-          border: 5px solid #032B4E;
-          border-radius: 35px;
-          z-index: 2;
-          object-fit: contain;
-          padding: 20px;
-          box-shadow: 10px 10px 0 0 #032B4E;
-          box-sizing: border-box;
+        width: 193.37px;
+        height: 193.37px;
+        background-color: white;
+        border: 5px solid #032B4E;
+        border-radius: 35px;
+        z-index: 2;
+        object-fit: contain;
+        padding: 20px;
+        box-shadow: 10px 10px 0 0 #032B4E;
+        box-sizing: border-box;
         }
       </style>
 
@@ -48,7 +48,8 @@
           <div class="logoBox">
             <div class="logoBoxContent">
               <!-- Deskpro Logo Begins -->
-              <svg class="deskproLogo" version="1.1" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+              <svg class="deskproLogo" version="1.1" xmlns="http://www.w3.org/2000/svg" width="100%"
+                height="100%"
                 viewBox="50 50 350 348">
                 <path
                   d="M154.62 205.169V134.658H204.619C218.38 134.658 230.822 136.779 241.918 140.995C253.041 145.237 262.559 151.316 270.5 159.257C278.441 166.939 284.52 176.329 288.762 187.425C291.064 192.986 292.745 198.91 293.883 205.169L337.778 205.221C336.33 192.65 333.381 180.907 328.906 170.017C322.284 153.618 312.895 139.598 300.738 127.959C288.581 116.06 274.018 106.929 257.076 100.566C240.133 94.2292 221.354 91.0476 200.713 91.0476L111.604 91.0993V205.273L154.62 205.169Z"
@@ -63,26 +64,19 @@
           </div>
 
           <span
-            style="font-size: 60px; font-weight: 900; text-shadow: -1px -1px 0px #032B4E, -1px -1px 0px #032B4E, 1px 1px 0px #032B4E, 1px -1px 0px #032B4E, -1px 1px 0px #032B4E, 3px 3px 0px #032B4E">+</span>
+            style="font-size: 60px; font-weight: 900; text-shadow: -1px -1px 0px #032B4E, -1px -1px 0px #032B4E, 1px 1px 0px #032B4E, 1px -1px 0px #032B4E, -1px 1px 0px #032B4E, 3px 3px 0px #032B4E">
+            +</span>
 
           <!-- Third Party Logo -->
           <div class="logoBox">
             <div class="logoBoxContent">
               <!-- Third Party Logo Starts Here -->
-                <svg width="120" height="120" viewBox="0 -3 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient x1="108.735812%" y1="30.1026618%" x2="46.8500043%" y2="65.9827664%" id="linearGradient-1">
-                      <stop stop-color="#0052CC" offset="17.6%"></stop>
-                      <stop stop-color="#2684FF" offset="100%"></stop>
-                    </linearGradient>
-                  </defs>
-                  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g fill-rule="nonzero">
-                      <path d="M0.77044,0 C0.29089,0 -0.06877,0.43959 0.01115,0.87918 L3.24814,20.7007 C3.32806,21.2203 3.76766,21.5799 4.28717,21.5799 L19.9526,21.5799 C20.3123,21.5799 20.632,21.3002 20.7119,20.9405 L23.9888,0.91915 C24.0688,0.43959 23.7091,0.03997 23.2296,0.03997 L0.77044,0 Z M14.5177,14.3067 L9.5223,14.3067 L8.2035,7.2333 L15.7565,7.2333 L14.5177,14.3067 Z" id="Shape" fill="#2684FF"></path>
-                      <path d="M22.9098,7.2333 L15.7165,7.2333 L14.5176,14.3067 L9.5222,14.3067 L3.64771,21.3002 C3.64771,21.3002 3.92744,21.54 4.32707,21.54 L19.9925,21.54 C20.3522,21.54 20.6719,21.2602 20.7518,20.9005 L22.9098,7.2333 Z" id="Path" fill="url(#linearGradient-1)"></path>
-                    </g>
-                  </g>
-                </svg>
+              <svg width="140" height="140" viewBox="0 0 48 48" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M38.3789 23.417L35.9515 38.2453C35.7932 39.1424 35.16 39.6701 34.2629 39.6701H13.6827C12.7856 39.6701 12.1523 39.1424 11.994 38.2453L7.71967 11.8076C7.56136 10.9105 8.03629 10.3301 8.88061 10.3301H39.0649C39.9092 10.3301 40.3842 10.9105 40.2259 11.8076L39.0649 18.7732C38.9066 19.7759 38.3262 20.198 37.3763 20.198H19.2235C18.9596 20.198 18.8013 20.3563 18.8541 20.673L20.2789 29.4327C20.3317 29.6438 20.49 29.8021 20.701 29.8021H27.2445C27.4556 29.8021 27.6139 29.6438 27.6667 29.4327L28.6693 23.1004C28.7748 22.3088 29.3025 21.9922 30.0413 21.9922H37.1652C38.2206 21.9922 38.5372 22.5199 38.3789 23.417Z"
+                  fill="#1868DB" />
+              </svg>
               <!-- Third Party Logo Ends Here -->
             </div>
             <div class="logoBoxShadow"></div>
