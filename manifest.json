@@ -83,12 +83,21 @@
       {
         "url": "https://api.bitbucket.org/.*",
         "methods": ["GET", "POST", "PUT"],
-        "timeout": 20
+        "timeout": 20,
+        "settingsInjection": {}
       },
       {
         "url": "https://bitbucket.org/site/oauth2/.*",
         "methods": ["POST"],
-        "timeout": 20
+        "timeout": 20,
+        "settingsInjection": {
+          "key": {
+            "header": ["Authorization"]
+          },
+          "secret": {
+            "header": ["Authorization"]
+          }
+        }
       }
     ]
   }
