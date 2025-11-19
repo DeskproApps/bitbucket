@@ -19,7 +19,7 @@ export const placeholders = {
   REFRESH_TOKEN: `[user[${REFRESH_TOKEN_PATH}]]`,
   KEY: "__key__",
   SECRET: "__secret__",
-};
+} as const;
 
 export const GLOBAL_CLIENT_ID = '5d4xDfqU3QVLUGZRxK';
 
